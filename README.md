@@ -19,7 +19,7 @@ Fast and easy documentation generator for markdown files
 
 ### Installation
 
-Download `easydoctor.zip` and unzip it to a directory or install [the composer package](https://packagist.org/packages/saschaende/easydoctor).
+Download [latest release](https://github.com/saschaende/easydoctor/releases/latest) and unzip it to a directory **or** install [the composer package](https://packagist.org/packages/saschaende/easydoctor).
 
     composer require saschaende/easydoctor
 
