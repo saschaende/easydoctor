@@ -59,7 +59,7 @@ class Easydoctor {
         $mdContents = "# Inhaltsverzeichnis\n\n";
         $pageCount = 1;
         foreach($this->contents as $pageHeadings){
-            $mdContents .= $pageCount . ". ". $pageHeadings['headline']."\n";
+            $mdContents .= $pageCount . ". [". $pageHeadings['headline']."](#page".$pageCount.")\n";
 
             foreach($pageHeadings['sub'] as $sub){
                 $mdContents .= "    - ". $sub."\n";
