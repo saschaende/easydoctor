@@ -35,19 +35,26 @@ Or create a new project with composer:
 Just execute this in your shell terminal:
 
 ``` 
-php easydoctor test
+php easydoctor -p test
 ```
 
 This will make a pdf from the test project in your doc directory. You will find the pdf in `output/pdf`
 
-### Projects strucure
+### Arguments
 
-* project
-    * CSS for documentation: css/style.css
-    * Images for your documentation project: images/*
-    * doc1.md
-    * doc2.md
-    * ...
+`php easydoctor -p project` project directory in "doc"
+
+`php easydoctor -v 1` verbose, no output
+
+### doc directory: Projects strucure
+
+* doc
+    * project
+        * CSS for documentation: css/style.css
+        * Images for your documentation project: images/*
+        * doc1.md
+        * doc2.md
+        * ...
     
 ### Important
 

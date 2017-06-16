@@ -4,11 +4,11 @@ Willkommen in der Dokumentation.
 
 ## Unterrubrik
 
-~~~
+<div lang="php">
 <?php
 echo "Hallo Welt!";
 ?>
-~~~
+</div>
     
 Dies ist [ein Beispiel][1] für einen Referenz-Link.
 

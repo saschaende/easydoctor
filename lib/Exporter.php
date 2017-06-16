@@ -2,7 +2,7 @@
 
 namespace SaschaEnde\Easydoctor;
 
-class Exporter
+class Exporter extends Easydoctor
 {
 
     private $args = [];
@@ -14,6 +14,7 @@ class Exporter
         ['latex','tex'],
         ['rtf','rtf'],
         ['opendocument','odt'],
+        ['html5','html']
     ];
 
     public function __construct($args)
@@ -44,13 +45,30 @@ class Exporter
      * Finally render all
      */
     public function render(){
-        if($this->settings['enabled']['pdf'] == 1){
+        // pdf?
+        if($this->settings['enable']['pdf'] == 1){
+            $this->printOutput('pdf export: enabled, start export');
             $this->exportPDF();
+        }else{
+            $this->printOutput('pdf export: disabled');
         }
-        foreach($this->pandocFormats as $format){
-            if($this->settings['enabled'][$format[1]]){
-                $this->exportPandoc($format[0],$format[1]);
+
+        // Pandoc?
+
+        if(!empty($this->settings['paths']['pandoc'])){
+
+            $pagesCompact = $this->compact();
+
+            foreach($this->pandocFormats as $format){
+                if($this->settings['enable'][$format[1]]){
+                    $this->printOutput($format[1].' export: enabled, start export');
+                    $this->exportPandoc($pagesCompact, $format[0],$format[1]);
+                }else{
+                    $this->printOutput($format[1].' export: disabled');
+                }
             }
+        }else{
+            $this->printOutput('pandoc not configured');
         }
     }
 
@@ -59,12 +77,15 @@ class Exporter
      */
     private function exportPDF()
     {
+        // create directory, if it does not exist
+        $this->checkExportDirectory('pdf');
+
         // initialize some extensions
         $pd = new \ParsedownExtra();
-        $mpdf = new mPDF();
+        $mpdf = new \mPDF();
 
         // generate document basics
-        $stylesheet = file_get_contents('doc/' . $this->args['project'] . '/css/style.css');
+        $stylesheet = file_get_contents('doc/' . $this->args['p'] . '/css/style.css');
         $mpdf->WriteHTML('<style>' . $stylesheet . '</style>');
         $mpdf->setFooter('{PAGENO}');
 
@@ -82,8 +103,9 @@ class Exporter
         }
 
         // save pdf
-        $pdfPath = 'output/pdf/' . $this->args['project'] . '-' . time() . '-' . date('d-m-Y') . '.pdf';
+        $pdfPath = 'output/pdf/' . $this->args['p'] . '-' . time() . '-' . date('d-m-Y') . '.pdf';
         $mpdf->Output($pdfPath, 'F');
+        $this->printOutput('pdf exported to: '.$pdfPath);
     }
 
     /**
@@ -91,8 +113,9 @@ class Exporter
      * @param string $divider
      * @return string
      */
-    private function compact($divider = ''){
-        $p = $this->contents_table;
+    private function compact($divider = "\n\n"){
+        $p = [];
+        $p[] = $this->contents_table;
         foreach ($this->pages as $page) {
             $p[] = $page;
         }
@@ -107,7 +130,29 @@ class Exporter
      */
     private function exportPandoc($page,$command,$extension)
     {
-        $output = shell_exec($this->settings['paths']['pandoc'].' seite1.md --top-level-division=chapter -f markdown_phpextra -t rst -s -o seite1.rst');
+        // save page to temp
+        $tmp_path = 'output/tmp.md';
+        $targetPath = 'output/'.$extension.'/' . $this->args['p'] . '-' . time() . '-' . date('d-m-Y') . '.'.$extension;
+
+        $this->checkExportDirectory($extension);
+
+        file_put_contents($tmp_path,$page);
+
+        $output = shell_exec($this->settings['paths']['pandoc'].' '.$tmp_path.' --top-level-division=chapter -f markdown_phpextra -t '.$command.' -s -o '.$targetPath);
+
+        unlink($tmp_path);
+    }
+
+    private function checkExportDirectory($dirname){
+        if(!is_writable('output')){
+            $this->printOutput('fatal error: sorry, the output directory has no write permissions');
+            exit;
+        }
+
+        // create directory, if it does not exist
+        if(!file_exists('output/'.$dirname)){
+            mkdir('output/'.$dirname);
+        }
     }
 
 }
