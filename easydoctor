@@ -45,7 +45,7 @@ $pd = new \ParsedownExtra();
 $mpdf = new mPDF();
 
 // generate document basics
-$stylesheet = file_get_contents('doc/css/style.css');
+$stylesheet = file_get_contents('doc/'.$argsConfig['project'].'/css/style.css');
 $mpdf->WriteHTML('<style>'.$stylesheet.'</style>');
 $mpdf->setFooter('{PAGENO}');
 

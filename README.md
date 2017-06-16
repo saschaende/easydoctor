@@ -23,5 +23,5 @@ Download `easydoctor.zip` and unzip it to a directory or install [the composer p
 Just execute this in your shell terminal:
 
 ``` 
-php easydoctor.php
+php easydoctor projectname
 ```
