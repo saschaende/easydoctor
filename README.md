@@ -38,7 +38,7 @@ Just execute this in your shell terminal:
 php easydoctor test
 ```
 
-This will make a pdf from the test project in your doc directory.
+This will make a pdf from the test project in your doc directory. You will find the pdf in `output/pdf`
 
 ### Projects strucure
 
