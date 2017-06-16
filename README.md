@@ -2,20 +2,21 @@
 
 Fast and easy documentation generator for markdown files
 
-[Website](http://parsedown.org/demo) | [Demo](http://parsedown.org/demo)
+[Website](http://easydoctor.sascha-ende.de) | [Demo](http://easydoctor.sascha-ende.de/demo)
 
 ### Features
 
-* You can use version control
+* You can use markdown
 * Super Fast
-* Extensible
 * [GitHub flavored](https://help.github.com/articles/github-flavored-markdown)
-* Tested in 5.3 to 7.1 and in HHVM
-* [Markdown Extra extension](https://github.com/erusev/parsedown-extra)
+* [Markdown Extra support](https://github.com/erusev/parsedown-extra)
+* Generated pdf document from markdown
+* Generated website from markdown (planned)
+* Code syntax highlighting for php code (planned)
 
 ### Installation
 
-Download `easydoctor.zip` and unzip it to a directory or install [the composer package](https://packagist.org/packages/easydoctor/easydoctor).
+Download `easydoctor.zip` and unzip it to a directory or install [the composer package](https://packagist.org/packages/saschaende/easydoctor).
 
 ### Example
 

@@ -1,5 +1,5 @@
 {
-    "name": "easydoctor/easydoctor",
+    "name": "saschaende/easydoctor",
     "description": "Fast and easy documentation generator for markdown files",
     "keywords": ["markdown", "documentation","generator"],
     "homepage": "http://easydoctor.sascha-ende.de",
