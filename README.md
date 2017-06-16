@@ -22,7 +22,7 @@ Fast and easy documentation generator for markdown files
 
 Download [latest release](https://github.com/saschaende/easydoctor/releases/latest) and unzip it to a directory **or** install [the composer package](https://packagist.org/packages/saschaende/easydoctor).
 
-    composer require saschaende/easydoctor
+    composer create-project saschaende/easydoctor
 
 ### Example
 
