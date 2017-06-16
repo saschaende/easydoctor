@@ -15,7 +15,9 @@ Fast and easy documentation generator for markdown files
 
 ### Planned
 
+* Also support latex and restructured text (Pandoc required)
 * Generate website from markdown
+* Generate restructured text files from markdown (Pandoc required)
 * Code syntax highlighting for php code
 
 ### Installation
@@ -31,6 +33,8 @@ Just execute this in your shell terminal:
 ``` 
 php easydoctor test
 ```
+
+This will make a pdf from the test project in your doc directory.
 
 ### Projects strucure
 
