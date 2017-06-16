@@ -3,18 +3,18 @@
 
 error_reporting(E_ERROR);
 
+// composer autoloader
+require_once __DIR__ . '/vendor/autoload.php';
+
 // bash formatting vars
 $boldS = "\033[1m";
 $boldE = "\033[0m";
 $redS = "\033[31m";
 $redE = "\033[0m";
 
-// get arguments
-$args = $_SERVER['argv'];
-
 // combine arguments in config array
 $argsConfig = [
-    'project'   =>  $args[1]
+    'project'   =>  $_SERVER['argv'][1]
 ];
 
 // checks
@@ -25,51 +25,27 @@ if(empty($argsConfig['project'])){
 
 // Require composer autoloader and load libraries
 use SaschaEnde\Easydoctor\Easydoctor;
-
-// composer autoloader
-require_once __DIR__ . '/vendor/autoload.php';
+use SaschaEnde\Easydoctor\Exporter;
 
 // call the doctor
 $doctor = new Easydoctor();
+$exporter = new Exporter($argsConfig);
 
 // scan documentation dir
 $docFiles = $doctor->scandir('doc/'.$argsConfig['project']);
 
 // load the pages now
-$Pages = [];
 foreach($docFiles as $filename){
     $fileContents = file_get_contents('doc/'.$argsConfig['project'].'/'.$filename);
-    $Pages[] = $fileContents;
     $doctor->addToContentList($fileContents);
+    $exporter->addPage($fileContents);
 }
 
 // Generate the contents list
-$contentsPage = $doctor->renderContentList();
+$exporter->setContents($doctor->renderContentList());
 
-// initialize some extensions
-$pd = new \ParsedownExtra();
-$mpdf = new mPDF();
+// Finally render
+$exporter->render();
 
-// generate document basics
-$stylesheet = file_get_contents('doc/'.$argsConfig['project'].'/css/style.css');
-$mpdf->WriteHTML('<style>'.$stylesheet.'</style>');
-$mpdf->setFooter('{PAGENO}');
-
-// put contents
-$html = $pd->text($contentsPage);
-$mpdf->WriteHTML('<html><body>'.$html.'</body></html>');
-
-// add pages
-$pagenum = 1;
-foreach($Pages as $page){
-    $html = $pd->text($page);
-    $mpdf->AddPage();
-    $mpdf->WriteHTML('<html><body><a name="page'.$pagenum.'">'.$html.'</body></html>');
-    $pagenum++;
-}
-
-// save pdf
-$pdfPath = 'output/pdf/'.$argsConfig['project'].'-'.time().'-'.date('d-m-Y').'.pdf';
-$mpdf->Output($pdfPath,'F');
 
 echo "You called the doctor, the documentation was rendered to ${redS}".$pdfPath.$redE;
