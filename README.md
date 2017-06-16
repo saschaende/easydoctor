@@ -10,7 +10,8 @@ Fast and easy documentation generator for markdown files
 * Super Fast
 * [GitHub flavored](https://help.github.com/articles/github-flavored-markdown)
 * [Markdown Extra support](https://github.com/erusev/parsedown-extra)
-* Generated pdf document from markdown
+* Generate pdf document from markdown
+* Table of contents will be automatically generated from h1 and h2
 
 ### Planned
 
@@ -39,3 +40,9 @@ php easydoctor test
     * doc1.md
     * doc2.md
     * ...
+    
+### Important
+
+* Every documentation page only has one # h1, this will be used for table of contents
+* h2 will be used as subpages in the table of contents
+* Define the ordering by naming the files for example with numbers
