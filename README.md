@@ -18,10 +18,21 @@ Fast and easy documentation generator for markdown files
 
 Download `easydoctor.zip` and unzip it to a directory or install [the composer package](https://packagist.org/packages/saschaende/easydoctor).
 
+    composer require saschaende/easydoctor
+
 ### Example
 
 Just execute this in your shell terminal:
 
 ``` 
-php easydoctor projectname
+php easydoctor test
 ```
+
+### Projects strucure
+
+* project
+    * CSS for documentation: css/style.css
+    * Images for your documentation project: images/*
+    * doc1.md
+    * doc2.md
+    * ...
