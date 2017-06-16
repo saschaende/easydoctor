@@ -1,0 +1,24 @@
+{
+    "name": "easydoctor/easydoctor",
+    "description": "Fast and easy documentation generator for markdown files",
+    "keywords": ["markdown", "documentation","generator"],
+    "homepage": "http://easydoctor.sascha-ende.de",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "SaschaEnde\\Easydoctor\\": "lib/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Sascha Ende",
+            "email": "info@sascha-ende.de",
+            "homepage": "http://easydoctor.sascha-ende.de"
+        }
+    ],
+    "require": {
+        "erusev/parsedown-extra": "^0.7.1",
+        "mpdf/mpdf": "^6.1"
+    }
+}

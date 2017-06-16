@@ -1,0 +1,67 @@
+#!/usr/bin/env php
+<?php
+
+error_reporting(E_ERROR);
+
+// get arguments
+$args = $_SERVER['argv'];
+
+// combine arguments in config array
+$argsConfig = [
+    'project'   =>  $args[1]
+];
+
+// checks
+if(empty($argsConfig['project'])){
+    echo 'error: please define a project. Syntax: php easydoctor projectname';
+    exit;
+}
+
+// Require composer autoloader and load libraries
+use SaschaEnde\Easydoctor\Easydoctor;
+
+// composer autoloader
+require_once __DIR__ . '/vendor/autoload.php';
+
+// call the doctor
+$doctor = new Easydoctor();
+
+// scan documentation dir
+$docFiles = $doctor->scandir('doc/'.$argsConfig['project']);
+
+// load the pages now
+$Pages = [];
+foreach($docFiles as $filename){
+    $fileContents = file_get_contents('doc/'.$argsConfig['project'].'/'.$filename);
+    $Pages[] = $fileContents;
+    $doctor->addToContentList($fileContents);
+}
+
+// Generate the contents list
+$contentsPage = $doctor->renderContentList();
+
+// initialize some extensions
+$pd = new \ParsedownExtra();
+$mpdf = new mPDF();
+
+// generate document basics
+$stylesheet = file_get_contents('doc/css/style.css');
+$mpdf->WriteHTML('<style>'.$stylesheet.'</style>');
+$mpdf->setFooter('{PAGENO}');
+
+// put contents
+$html = $pd->text($contentsPage);
+$mpdf->WriteHTML('<html><body>'.$html.'</body></html>');
+
+// add pages
+foreach($Pages as $page){
+    $html = $pd->text($page);
+    $mpdf->AddPage();
+    $mpdf->WriteHTML('<html><body>'.$html.'</body></html>');
+}
+
+// save pdf
+$pdfPath = 'output/pdf/'.$argsConfig['project'].'-'.time().'-'.date('d-m-Y').'.pdf';
+$mpdf->Output($pdfPath,'F');
+
+echo 'You called the doctor, the documentation was rendered to '.$pdfPath;
