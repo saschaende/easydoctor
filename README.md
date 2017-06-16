@@ -11,8 +11,11 @@ Fast and easy documentation generator for markdown files
 * [GitHub flavored](https://help.github.com/articles/github-flavored-markdown)
 * [Markdown Extra support](https://github.com/erusev/parsedown-extra)
 * Generated pdf document from markdown
-* Generated website from markdown (planned)
-* Code syntax highlighting for php code (planned)
+
+### Planned
+
+* Generate website from markdown
+* Code syntax highlighting for php code
 
 ### Installation
 
