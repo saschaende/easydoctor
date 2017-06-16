@@ -20,9 +20,9 @@ Fast and easy documentation generator for markdown files
 
 ### Installation
 
-Download [latest release](https://github.com/saschaende/easydoctor/releases/latest) and unzip it to a directory **or** install [the composer package](https://packagist.org/packages/saschaende/easydoctor).
+Download [latest release](https://github.com/saschaende/easydoctor/releases/latest) and unzip it to a directory **or** clone from git:
 
-    composer create-project saschaende/easydoctor
+    git clone git@github.com:saschaende/easydoctor.gi
 
 ### Example
 
