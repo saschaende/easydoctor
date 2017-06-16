@@ -2,7 +2,7 @@
 
 Fast and easy documentation generator for markdown files
 
-[Website](http://easydoctor.sascha-ende.de) | [Example 1 - Syntax tests](https://github.com/saschaende/easydoctor/raw/master/output/pdf/test-1497593796-16-06-2017.pdf)  | [Example 2 - The easydoc readme](https://github.com/saschaende/easydoctor/raw/master/output/pdf/easydoctor-1497600906-16-06-2017.pdf)
+[Website](http://easydoctor.sascha-ende.de) | [Demo](http://easydoctor.sascha-ende.de/demo)
 
 ### Features
 
