@@ -12,7 +12,7 @@ Fast and easy documentation generator for markdown files
 * [GitHub flavored](https://help.github.com/articles/github-flavored-markdown)
 * [Markdown Extra support](https://github.com/erusev/parsedown-extra)
 * Table of contents will be automatically generated from h1 and h2
-* PHP Syntax highlighting
+* Syntax highlighting for 287 programming languages
 * Export to:
     * PDF
     * Plain HTML ([Pandoc][1] required)
@@ -48,9 +48,11 @@ This will make a pdf from the test project in your doc directory. You will find 
 
 ## Arguments
 
-`php easydoctor -p project` project directory in "doc"
-
-`php easydoctor -v 1` verbose, no output
+Command | Description
+------------- | -------------
+php easydoctor **-p** *project*  | project directory in "doc"
+php easydoctor **-v on**  | enable verbose, no output
+php easydoctor **-sh off**  | disable syntax highlight
 
 ## doc directory: Projects strucure
 
@@ -69,10 +71,271 @@ This will make a pdf from the test project in your doc directory. You will find 
 * Define the ordering by naming the files for example with numbers
 * You can configure easydoc with ``easydoctor.ini``
 
-## PHP Syntax highlight in your markdown files
+## Syntax highlight for programming languages in your markdown files
 
 Example:
 
     <div lang="php">YOUR PHP CODE</div>
+    
+Supported languages:
+    
+* 4cs 
+* 6502acme 
+* 6502kickass 
+* 6502tasm 
+* 68000devpac 
+* abap 
+* actionscript 
+* actionscript3 
+* ada 
+* aimms 
+* algol68 
+* apache 
+* applescript 
+* apt_sources 
+* arm 
+* asm 
+* asp 
+* asymptote 
+* autoconf 
+* autohotkey 
+* autoit 
+* avisynth 
+* awk 
+* bascomavr 
+* bash 
+* basic4gl 
+* batch 
+* bf 
+* biblatex 
+* bibtex 
+* blitzbasic 
+* bnf 
+* boo 
+* c 
+* c_loadrunner 
+* c_mac 
+* c_winapi 
+* caddcl 
+* cadlisp 
+* ceylon 
+* cfdg 
+* cfm 
+* chaiscript 
+* chapel 
+* cil 
+* clojure 
+* cmake 
+* cobol 
+* coffeescript 
+* cpp-qt 
+* cpp-winapi 
+* cpp 
+* csharp 
+* css 
+* cuesheet 
+* d 
+* dart 
+* dcl 
+* dcpu16 
+* dcs 
+* delphi 
+* diff 
+* div 
+* dos 
+* dot 
+* e 
+* ecmascript 
+* eiffel 
+* email 
+* epc 
+* erlang 
+* euphoria 
+* ezt 
+* f1 
+* falcon 
+* fo 
+* fortran 
+* freebasic 
+* freeswitch 
+* fsharp 
+* gambas 
+* gdb 
+* genero 
+* genie 
+* gettext 
+* glsl 
+* gml 
+* gnuplot 
+* go 
+* groovy 
+* gwbasic 
+* haskell 
+* haxe 
+* hicest 
+* hq9plus 
+* html4strict 
+* html5 
+* icon 
+* idl 
+* ini 
+* inno 
+* intercal 
+* io 
+* ispfpanel 
+* j 
+* java 
+* java5 
+* javascript 
+* jcl 
+* jquery 
+* julia 
+* kixtart 
+* klonec 
+* klonecpp 
+* kotlin 
+* latex 
+* lb 
+* ldif 
+* lisp 
+* llvm 
+* locobasic 
+* logtalk 
+* lolcode 
+* lotusformulas 
+* lotusscript 
+* lscript 
+* lsl2 
+* lua 
+* m68k 
+* magiksf 
+* make 
+* mapbasic 
+* mathematica 
+* matlab 
+* mercury 
+* metapost 
+* mirc 
+* mk-61 
+* mmix 
+* modula2 
+* modula3 
+* mpasm 
+* mxml 
+* mysql 
+* nagios 
+* netrexx 
+* newlisp 
+* nginx 
+* nimrod 
+* nsis 
+* oberon2 
+* objc 
+* objeck 
+* ocaml-brief 
+* ocaml 
+* octave 
+* oobas 
+* oorexx 
+* oracle11 
+* oracle8 
+* oxygene 
+* oz 
+* parasail 
+* parigp 
+* pascal 
+* pcre 
+* per 
+* perl 
+* perl6 
+* pf 
+* phix 
+* php-brief 
+* php 
+* pic16 
+* pike 
+* pixelbender 
+* pli 
+* plsql 
+* postgresql 
+* postscript 
+* povray 
+* powerbuilder 
+* powershell 
+* proftpd 
+* progress 
+* prolog 
+* properties 
+* providex 
+* purebasic 
+* pycon 
+* pys60 
+* python 
+* q 
+* qbasic 
+* qml 
+* racket 
+* rails 
+* rbs 
+* rebol 
+* reg 
+* rexx 
+* robots 
+* rpmspec 
+* rsplus 
+* ruby 
+* rust 
+* sas 
+* sass 
+* scala 
+* scheme 
+* scilab 
+* scl 
+* sdlbasic 
+* smalltalk 
+* smarty 
+* spark 
+* sparql 
+* sql 
+* standardml 
+* stonescript 
+* swift 
+* systemverilog 
+* tcl 
+* tclegg 
+* teraterm 
+* texgraph 
+* text 
+* thinbasic 
+* tsql 
+* twig 
+* typoscript 
+* unicon 
+* upc 
+* urbi 
+* uscript 
+* vala 
+* vb 
+* vbnet 
+* vbscript 
+* vedit 
+* verilog 
+* vhdl 
+* vim 
+* visualfoxpro 
+* visualprolog 
+* whitespace 
+* whois 
+* winbatch 
+* xbasic 
+* xml 
+* xojo 
+* xorg_conf 
+* xpp 
+* xyscript 
+* yaml 
+* z80 
+* zxbasic 
+    
     
 [1]: http://pandoc.org/  "Pandoc"

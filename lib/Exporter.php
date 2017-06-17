@@ -4,8 +4,6 @@ namespace SaschaEnde\Easydoctor;
 
 class Exporter extends Easydoctor
 {
-
-    private $args = [];
     private $settings = [];
     private $contents_table;
     private $pages = [];
@@ -17,10 +15,9 @@ class Exporter extends Easydoctor
         ['html5','html']
     ];
 
-    public function __construct($args)
+    public function __construct()
     {
         $this->settings = parse_ini_file('easydoctor.ini',true);
-        $this->args = $args;
     }
 
     /**
@@ -85,7 +82,7 @@ class Exporter extends Easydoctor
         $mpdf = new \mPDF();
 
         // generate document basics
-        $stylesheet = file_get_contents('doc/' . $this->args['p'] . '/css/style.css');
+        $stylesheet = file_get_contents('doc/' . Arguments::get('p') . '/css/style.css');
         $mpdf->WriteHTML('<style>' . $stylesheet . '</style>');
         $mpdf->setFooter('{PAGENO}');
 
@@ -103,7 +100,7 @@ class Exporter extends Easydoctor
         }
 
         // save pdf
-        $pdfPath = 'output/pdf/' . $this->args['p'] . '-' . time() . '-' . date('d-m-Y') . '.pdf';
+        $pdfPath = 'output/pdf/' . Arguments::get('p') . '-' . time() . '-' . date('d-m-Y') . '.pdf';
         $mpdf->Output($pdfPath, 'F');
         $this->printOutput('pdf exported to: '.$pdfPath);
     }
@@ -132,7 +129,7 @@ class Exporter extends Easydoctor
     {
         // save page to temp
         $tmp_path = 'output/tmp.md';
-        $targetPath = 'output/'.$extension.'/' . $this->args['p'] . '-' . time() . '-' . date('d-m-Y') . '.'.$extension;
+        $targetPath = 'output/'.$extension.'/' . Arguments::get('p') . '-' . time() . '-' . date('d-m-Y') . '.'.$extension;
 
         $this->checkExportDirectory($extension);
 

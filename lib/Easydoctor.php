@@ -70,27 +70,13 @@ class Easydoctor
         return $mdContents;
     }
 
-    public function getArguments()
-    {
-        $Args = [];
-        for ($i = 0; $i < count($_SERVER['argv']); $i++) {
-            if (substr($_SERVER['argv'][$i], 0, 1) == '-' && !empty($_SERVER['argv'][$i + 1])) {
-                $argument = substr($_SERVER['argv'][$i], 1);
-                $value = $_SERVER['argv'][$i + 1];
-                $Args[$argument] = $value;
-            }
-        }
-        return $Args;
-    }
-
     /**
      * Debug output
      * @param $text
      */
     public function printOutput($text)
     {
-        $Arg = $this->getArguments();
-        if ($Arg['v'] == '1') {
+        if (Arguments::get('v') == 'on') {
             return;
         }
         echo '* ' . $text . "\n";
@@ -100,10 +86,16 @@ class Easydoctor
      * Extend markdown for rendering inline php code
      * @param $md
      */
-    public function renderPhpCode($md)
+    public function renderProgrammingCode($md)
     {
-        return preg_replace_callback('/<div lang="php">(.*?)<\/div>/sm', function ($matches) {
-            return '<pre>'.highlight_string(trim($matches[1]),true).'</pre>';
+        // syntax highlighting disabled
+        if(Arguments::get('sh') == 'off'){
+            return $md;
+        }
+        // syntax highlighting enabled
+        return preg_replace_callback('/<div lang="(.*?)">(.*?)<\/div>/sm', function ($matches) {
+            $geshi = new \GeSHi($matches[2],$matches[1]);
+            return $geshi->parse_code();
         }, $md);
     }
 }

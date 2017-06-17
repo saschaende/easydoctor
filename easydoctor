@@ -7,33 +7,33 @@ error_reporting(E_ERROR);
 require_once __DIR__ . '/vendor/autoload.php';
 
 // Require composer autoloader and load libraries
+use SaschaEnde\Easydoctor\Arguments;
 use SaschaEnde\Easydoctor\Easydoctor;
 use SaschaEnde\Easydoctor\Exporter;
+
+Arguments::getArguments();
 
 // call the doctor
 $doctor = new Easydoctor();
 $doctor->printOutput("you called the doctor, welcome...");
 
-
-$argsConfig = $doctor->getArguments();
-
 // call exporter
-$exporter = new Exporter($argsConfig);
+$exporter = new Exporter();
 
 // checks
-if(empty($argsConfig['p'])){
+if(empty(Arguments::get('p'))){
     echo 'error: please define a project. Syntax: php easydoctor projectname';
     exit;
 }
 
 // scan documentation dir
-$docFiles = $doctor->scandir('doc/'.$argsConfig['p']);
+$docFiles = $doctor->scandir('doc/'.Arguments::get('p'));
 
 // load the pages now
 foreach($docFiles as $filename){
-    $fileContents = file_get_contents('doc/'.$argsConfig['p'].'/'.$filename);
+    $fileContents = file_get_contents('doc/'.Arguments::get('p').'/'.$filename);
     $doctor->addToContentList($fileContents);
-    $fileContents = $doctor->renderPhpCode($fileContents);
+    $fileContents = $doctor->renderProgrammingCode($fileContents);
     $exporter->addPage($fileContents);
 }
 
