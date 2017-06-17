@@ -285,5 +285,53 @@
         ],
         "description": "PHP5.3+ namespaced version of phpQuery with enhanced CSS support",
         "homepage": "http://code.google.com/p/phpquery/"
+    },
+    {
+        "name": "saschaende/geshi",
+        "version": "1.0.9.0",
+        "version_normalized": "1.0.9.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/saschaende/geshi.git",
+            "reference": "ac951d4ec7256f547aeee44a5f3b397f0b4860a2"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/saschaende/geshi/zipball/ac951d4ec7256f547aeee44a5f3b397f0b4860a2",
+            "reference": "ac951d4ec7256f547aeee44a5f3b397f0b4860a2",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">4.3.0"
+        },
+        "time": "2017-06-17T12:25:42+00:00",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "classmap": [
+                "./"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "GPL-2.0"
+        ],
+        "authors": [
+            {
+                "name": "Nigel McNie",
+                "email": "nigel@geshi.org"
+            },
+            {
+                "name": "Benny Baumann",
+                "email": "BenBE@geshi.org"
+            }
+        ],
+        "description": "GeSHi - Generic Syntax Highlighter. This is an unmodified port of GeSHi project code found on SourceForge.",
+        "homepage": "http://qbnz.com/highlighter",
+        "keywords": [
+            "highlight",
+            "highlighter",
+            "syntax"
+        ]
     }
 ]
