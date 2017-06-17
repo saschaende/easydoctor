@@ -24,6 +24,7 @@ Fast and easy documentation generator for markdown files
 ## Planned
 
 * Generate website from markdown
+* Syntax highlight support for more languages
 
 ## Installation
 
