@@ -103,7 +103,7 @@ class Easydoctor
     public function renderPhpCode($md)
     {
         return preg_replace_callback('/<div lang="php">(.*?)<\/div>/sm', function ($matches) {
-            return '<pre>'.highlight_string($matches[1],true).'</pre>';
+            return '<pre>'.highlight_string(trim($matches[1]),true).'</pre>';
         }, $md);
     }
 }

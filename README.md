@@ -2,25 +2,30 @@
 
 Fast and easy documentation generator for markdown files
 
-[Website](http://easydoctor.sascha-ende.de) | [Example 1 - Syntax tests](test-1497606995-16-06-2017.pdf)  | [Example 2 - The easydoc readme](https://github.com/saschaende/easydoctor/raw/master/output/pdf/easydoctor-1497606999-16-06-2017.pdf)
+[Website](http://easydoctor.sascha-ende.de) | [Example 1 - Syntax tests](https://github.com/saschaende/easydoctor/raw/master/output/pdf/test.pdf)  | [Example 2 - The easydoc readme](https://github.com/saschaende/easydoctor/raw/master/output/pdf/easydoctor.pdf)
 
-### Features
+## Features
 
-* You can use markdown
+* Use markdown to write your documentation
+* Every chapter one file
 * Super Fast
 * [GitHub flavored](https://help.github.com/articles/github-flavored-markdown)
 * [Markdown Extra support](https://github.com/erusev/parsedown-extra)
-* Generate pdf document from markdown
 * Table of contents will be automatically generated from h1 and h2
+* PHP Syntax highlighting
+* Export to:
+    * PDF
+    * Plain HTML ([Pandoc][1] required)
+    * Latex ([Pandoc][1] required)
+    * Restructured text ([Pandoc][1] required)
+    * RTF ([Pandoc][1] required)
+    * ODT ([Pandoc][1] required)
 
-### Planned
+## Planned
 
-* Also support latex and restructured text (Pandoc required)
 * Generate website from markdown
-* Generate restructured text files from markdown (Pandoc required)
-* Code syntax highlighting for php code
 
-### Installation
+## Installation
 
 Download [latest release](https://github.com/saschaende/easydoctor/releases/latest) and unzip it to a directory **or** clone from git:
 
@@ -30,7 +35,7 @@ Or create a new project with composer:
 
     composer create-project saschaende/easydoctor
 
-### Example
+## Example
 
 Just execute this in your shell terminal:
 
@@ -40,13 +45,13 @@ php easydoctor -p test
 
 This will make a pdf from the test project in your doc directory. You will find the pdf in `output/pdf`
 
-### Arguments
+## Arguments
 
 `php easydoctor -p project` project directory in "doc"
 
 `php easydoctor -v 1` verbose, no output
 
-### doc directory: Projects strucure
+## doc directory: Projects strucure
 
 * doc
     * project
@@ -56,8 +61,17 @@ This will make a pdf from the test project in your doc directory. You will find 
         * doc2.md
         * ...
     
-### Important
+## Important to know
 
 * Every documentation page only has one h1, this will be used for table of contents
 * h2 will be used as subpages in the table of contents
 * Define the ordering by naming the files for example with numbers
+* You can configure easydoc with ``easydoctor.ini``
+
+## PHP Syntax highlight in your markdown files
+
+Example:
+
+    <div lang="php">YOUR PHP CODE</div>
+    
+[1]: http://pandoc.org/  "Pandoc"

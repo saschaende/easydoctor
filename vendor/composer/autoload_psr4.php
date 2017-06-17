@@ -7,4 +7,5 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'SaschaEnde\\Easydoctor\\' => array($baseDir . '/lib'),
+    'PhpQuery\\' => array($vendorDir . '/cagartner/phpquery/src'),
 );
