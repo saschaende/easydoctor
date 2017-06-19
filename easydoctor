@@ -30,11 +30,13 @@ if(empty(Arguments::get('p'))){
 $docFiles = $doctor->scandir('doc/'.Arguments::get('p'));
 
 // load the pages now
+$pagenum = 1;
 foreach($docFiles as $filename){
     $fileContents = file_get_contents('doc/'.Arguments::get('p').'/'.$filename);
-    $doctor->addToContentList($fileContents);
+    $doctor->addToContentList($fileContents,$pagenum);
     $fileContents = $doctor->renderProgrammingCode($fileContents);
     $exporter->addPage($fileContents);
+    $pagenum++;
 }
 
 // Generate the contents list

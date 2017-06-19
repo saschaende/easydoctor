@@ -27,8 +27,8 @@ class Easydoctor
             if ($file != "." && $file != ".." && is_dir($dir . "/" . $file) == true) {
                 array_push($DIRS, $file);
             } elseif ($file != "." && $file != ".htaccess" && $file != ".." && is_dir($dir . "/" . $file) == false) {
-                $extension = strtolower(pathinfo($file,PATHINFO_EXTENSION));
-                if($extension == 'md'){
+                $extension = strtolower(pathinfo($file, PATHINFO_EXTENSION));
+                if ($extension == 'md') {
                     array_push($FILES, $file);
                 }
             }
@@ -42,33 +42,52 @@ class Easydoctor
         }
     }
 
-    public function addToContentList($content)
+    /**
+     * Search for headings and add them to the content table
+     * @param $content
+     * @param $pagenum
+     */
+    public function addToContentList($content, $pagenum)
     {
         preg_match_all('/(#+)(.*)/', $content, $matches);
         $results = [];
         foreach ($matches[2] as $key => $match) {
+
+            $value = trim($match);
+            $hash = md5($value);
+
             if (strlen($matches[1][$key]) == 1) {
-                $results['headline'] = trim($match);
+                $type = 'h1';
             }
             if (strlen($matches[1][$key]) == 2) {
-                $results['sub'][] = trim($match);
+                $type = 'h2';
             }
+
+            $results[] = [
+                'type' => $type,
+                'title' => $value,
+                'hash'  =>  $hash
+
+            ];
         }
-        $this->contents[] = $results;
+        $this->contents[$pagenum] = $results;
     }
 
     public function renderContentList()
     {
         $mdContents = "# Inhaltsverzeichnis\n\n";
-        $pageCount = 1;
-        foreach ($this->contents as $pageHeadings) {
-            $mdContents .= $pageCount . ". [" . $pageHeadings['headline'] . "](#page" . $pageCount . ")\n";
+        foreach ($this->contents as $page => $headings) {
 
-            foreach ($pageHeadings['sub'] as $sub) {
-                $mdContents .= "    - " . $sub . "\n";
+            foreach ($headings as $heading) {
+                if ($heading['type'] == 'h2') {
+                    $prefix = '     ';
+                } else {
+                    $prefix = '';
+                }
+
+                $mdContents .= $prefix . "* [" . $heading['title'] . "](#page" . $page . ")\n";
             }
 
-            $pageCount++;
         }
         return $mdContents;
     }
@@ -92,14 +111,14 @@ class Easydoctor
     public function renderProgrammingCode($md)
     {
         // syntax highlighting disabled
-        if(Arguments::get('sh') == 'off'){
+        if (Arguments::get('sh') == 'off') {
             return $md;
         }
         // syntax highlighting enabled
         return preg_replace_callback('/<div lang="(.*?)">(.*?)<\/div>/sm', function ($matches) {
-            $geshi = new \GeSHi(trim($matches[2]),$matches[1]);
+            $geshi = new \GeSHi(trim($matches[2]), $matches[1]);
             $geshi->set_header_type(GESHI_HEADER_NONE);
-            return '<pre><code>'.$geshi->parse_code().'</code></pre>';
+            return '<pre><code>' . $geshi->parse_code() . '</code></pre>';
         }, $md);
     }
 }
