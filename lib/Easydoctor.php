@@ -94,8 +94,9 @@ class Easydoctor
         }
         // syntax highlighting enabled
         return preg_replace_callback('/<div lang="(.*?)">(.*?)<\/div>/sm', function ($matches) {
-            $geshi = new \GeSHi($matches[2],$matches[1]);
-            return $geshi->parse_code();
+            $geshi = new \GeSHi(trim($matches[2]),$matches[1]);
+            $geshi->set_header_type(GESHI_HEADER_NONE);
+            return '<pre><code>'.$geshi->parse_code().'</code></pre>';
         }, $md);
     }
 }

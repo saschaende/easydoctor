@@ -88,14 +88,14 @@ class Exporter extends Easydoctor
 
         // put contents
         $html = $pd->text($this->contents_table);
-        $mpdf->WriteHTML('<html><body>' . $html . '</body></html>');
+        $mpdf->WriteHTML('<html><body><article class="markdown-body">' . $html . '</article></body></html>');
 
         // add pages
         $pagenum = 1;
         foreach ($this->pages as $page) {
             $html = $pd->text($page);
             $mpdf->AddPage();
-            $mpdf->WriteHTML('<html><body><a name="page' . $pagenum . '">' . $html . '</body></html>');
+            $mpdf->WriteHTML('<html><body><article class="markdown-body"><a name="page' . $pagenum . '"></a>' . $html . '</article></body></html>');
             $pagenum++;
         }
 
