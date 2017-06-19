@@ -27,7 +27,10 @@ class Easydoctor
             if ($file != "." && $file != ".." && is_dir($dir . "/" . $file) == true) {
                 array_push($DIRS, $file);
             } elseif ($file != "." && $file != ".htaccess" && $file != ".." && is_dir($dir . "/" . $file) == false) {
-                array_push($FILES, $file);
+                $extension = strtolower(pathinfo($file,PATHINFO_EXTENSION));
+                if($extension == 'md'){
+                    array_push($FILES, $file);
+                }
             }
         }
         closedir($handle);
