@@ -10,15 +10,9 @@ require_once __DIR__ . '/vendor/autoload.php';
 use SaschaEnde\Easydoctor\Arguments;
 use SaschaEnde\Easydoctor\Easydoctor;
 use SaschaEnde\Easydoctor\Exporter;
+use SaschaEnde\Easydoctor\Importer;
 
 Arguments::getArguments();
-
-// call the doctor
-$doctor = new Easydoctor();
-$doctor->printOutput("you called the doctor, welcome...");
-
-// call exporter
-$exporter = new Exporter();
 
 // checks
 if(empty(Arguments::get('p'))){
@@ -26,8 +20,20 @@ if(empty(Arguments::get('p'))){
     exit;
 }
 
+$importer = new Importer();
+exit;
+
+/*
+// call the doctor
+$doctor = new Easydoctor();
+$doctor->printOutput("you called the doctor, welcome...");
+
+// call exporter
+$exporter = new Exporter();
+
+
 // scan documentation dir
-$docFiles = $doctor->scandir('doc/'.Arguments::get('p'));
+$docFiles = $doctor->scandir();
 
 // load the pages now
 $pagenum = 1;
@@ -47,3 +53,4 @@ $exporter->render();
 
 // success
 $doctor->printOutput("thanks, the documentation was rendered");
+*/

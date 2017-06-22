@@ -96,6 +96,8 @@ class Exporter extends Easydoctor
             $html = $pd->text($page);
             $mpdf->AddPage();
             $mpdf->WriteHTML('<html><body><article class="markdown-body"><a name="page' . $pagenum . '"></a>' . $html . '</article></body></html>');
+            // Get current page number after this code
+            $mpdf->PageNo();
             $pagenum++;
         }
 
