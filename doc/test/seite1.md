@@ -27,7 +27,7 @@ einen Inline-Link.
 
 Echt toll, sogar mit Bild
 
-![Beispielbild](doc/test/images/example.jpg)
+![Beispielbild](images/example.jpg)
 
 ### Systemanforderungen
 

@@ -2,155 +2,50 @@
 
 namespace SaschaEnde\Easydoctor;
 
-class Exporter extends Easydoctor
+use PhpQuery\phpQuery;
+use function PhpQuery\pq;
+
+class Exporter
 {
-    private $settings = [];
-    private $contents_table;
-    private $pages = [];
-    private $pandocFormats = [
-        ['rst','rst'],
-        ['latex','tex'],
-        ['rtf','rtf'],
-        ['opendocument','odt'],
-        ['html5','html']
-    ];
+    public $importer;
+    public $parser;
+    public $converter;
 
-    public function __construct()
+
+    public function __construct(Importer $importer, Parser $parser, Converter $converter)
     {
-        $this->settings = parse_ini_file('easydoctor.ini',true);
+        $this->importer = $importer;
+        $this->parser = $parser;
+        $this->converter = $converter;
     }
 
-    /**
-     * Set table of contents
-     * @param $md
-     */
-    public function setContents($md)
-    {
-        $this->contents_table = $md;
+    public function execute(){
+
     }
 
-    /**
-     * Add a page
-     * @param $md
-     */
-    public function addPage($md)
-    {
-        $this->pages[] = $md;
-    }
-
-    /**
-     * Finally render all
-     */
-    public function render(){
-        // pdf?
-        if($this->settings['enable']['pdf'] == 1){
-            $this->printOutput('pdf export: enabled, start export');
-            $this->exportPDF();
-        }else{
-            $this->printOutput('pdf export: disabled');
-        }
-
-        // Pandoc?
-
-        if(!empty($this->settings['paths']['pandoc'])){
-
-            $pagesCompact = $this->compact();
-
-            foreach($this->pandocFormats as $format){
-                if($this->settings['enable'][$format[1]]){
-                    $this->printOutput($format[1].' export: enabled, start export');
-                    $this->exportPandoc($pagesCompact, $format[0],$format[1]);
-                }else{
-                    $this->printOutput($format[1].' export: disabled');
-                }
-            }
-        }else{
-            $this->printOutput('pandoc not configured');
-        }
-    }
-
-    /**
-     * PDF Export
-     */
-    private function exportPDF()
-    {
-        // create directory, if it does not exist
-        $this->checkExportDirectory('pdf');
-
-        // initialize some extensions
+    public function getHtmlFromMarkdown($md){
         $pd = new \ParsedownExtra();
-        $mpdf = new \mPDF();
+        return $pd->text($md);
+    }
 
-        // generate document basics
-        $stylesheet = file_get_contents('doc/' . Arguments::get('p') . '/css/style.css');
-        $mpdf->WriteHTML('<style>' . $stylesheet . '</style>');
-        $mpdf->setFooter('{PAGENO}');
-
-        // put contents
-        $html = $pd->text($this->contents_table);
-        $mpdf->WriteHTML('<html><body><article class="markdown-body">' . $html . '</article></body></html>');
-
-        // add pages
-        $pagenum = 1;
-        foreach ($this->pages as $page) {
-            $html = $pd->text($page);
-            $mpdf->AddPage();
-            $mpdf->WriteHTML('<html><body><article class="markdown-body"><a name="page' . $pagenum . '"></a>' . $html . '</article></body></html>');
-            // Get current page number after this code
-            $mpdf->PageNo();
-            $pagenum++;
+    public function setAbsoluteImagePaths(&$html){
+        // images
+        $doc = phpQuery::newDocument($html);
+        $path = EASYDOCTORPATH.'/doc/'.Arguments::get('p').'/';
+        foreach($doc->find('img') as $img){
+            pq($img)->attr('src',$path. pq($img)->attr('src'));
         }
-
-        // save pdf
-        $pdfPath = 'output/pdf/' . Arguments::get('p') . '-' . time() . '-' . date('d-m-Y') . '.pdf';
-        $mpdf->Output($pdfPath, 'F');
-        $this->printOutput('pdf exported to: '.$pdfPath);
+        $html = $doc->getDocument();
     }
 
-    /**
-     * Compact all pages in one string
-     * @param string $divider
-     * @return string
-     */
-    private function compact($divider = "\n\n"){
-        $p = [];
-        $p[] = $this->contents_table;
-        foreach ($this->pages as $page) {
-            $p[] = $page;
-        }
-        return implode($divider,$p);
-    }
-
-    /**
-     * Export other formats with pandoc
-     * @param $page
-     * @param $command
-     * @param $extension
-     */
-    private function exportPandoc($page,$command,$extension)
-    {
-        // save page to temp
-        $tmp_path = 'output/tmp.md';
-        $targetPath = 'output/'.$extension.'/' . Arguments::get('p') . '-' . time() . '-' . date('d-m-Y') . '.'.$extension;
-
-        $this->checkExportDirectory($extension);
-
-        file_put_contents($tmp_path,$page);
-
-        $output = shell_exec($this->settings['paths']['pandoc'].' '.$tmp_path.' --top-level-division=chapter -f markdown_phpextra -t '.$command.' -s -o '.$targetPath);
-
-        unlink($tmp_path);
-    }
-
-    private function checkExportDirectory($dirname){
+    public function checkExportDirectory(){
         if(!is_writable('output')){
-            $this->printOutput('fatal error: sorry, the output directory has no write permissions');
-            exit;
+            die('fatal error: sorry, the output directory has no write permissions');
         }
 
         // create directory, if it does not exist
-        if(!file_exists('output/'.$dirname)){
-            mkdir('output/'.$dirname);
+        if(!file_exists('output/'.Arguments::get('p'))){
+            mkdir('output/'.Arguments::get('p'));
         }
     }
 

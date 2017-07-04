@@ -5,12 +5,16 @@ error_reporting(E_ERROR);
 
 // composer autoloader
 require_once __DIR__ . '/vendor/autoload.php';
+define('EASYDOCTORPATH',__DIR__);
 
 // Require composer autoloader and load libraries
 use SaschaEnde\Easydoctor\Arguments;
+use SaschaEnde\Easydoctor\Converter;
 use SaschaEnde\Easydoctor\Easydoctor;
 use SaschaEnde\Easydoctor\Exporter;
 use SaschaEnde\Easydoctor\Importer;
+use SaschaEnde\Easydoctor\Parser;
+use SaschaEnde\Easydoctor\PdfExporter;
 
 Arguments::getArguments();
 
@@ -20,37 +24,13 @@ if(empty(Arguments::get('p'))){
     exit;
 }
 
+// import files
 $importer = new Importer();
-exit;
+// parse the lines to get headings and toc
+$parser = new Parser($importer->getLines());
+// get back parsed markdown from the lines
+$converter = new Converter($parser->getParsedLines());
 
-/*
-// call the doctor
-$doctor = new Easydoctor();
-$doctor->printOutput("you called the doctor, welcome...");
-
-// call exporter
-$exporter = new Exporter();
-
-
-// scan documentation dir
-$docFiles = $doctor->scandir();
-
-// load the pages now
-$pagenum = 1;
-foreach($docFiles as $filename){
-    $fileContents = file_get_contents('doc/'.Arguments::get('p').'/'.$filename);
-    $doctor->addToContentList($fileContents,$pagenum);
-    $fileContents = $doctor->renderProgrammingCode($fileContents);
-    $exporter->addPage($fileContents);
-    $pagenum++;
-}
-
-// Generate the contents list
-$exporter->setContents($doctor->renderContentList());
-
-// Finally render
-$exporter->render();
-
-// success
-$doctor->printOutput("thanks, the documentation was rendered");
-*/
+// Export
+$pdfExporter = new PdfExporter($importer,$parser,$converter);
+$pdfExporter->execute();

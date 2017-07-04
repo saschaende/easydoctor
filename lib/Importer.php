@@ -13,8 +13,16 @@ class Importer {
         $this->filenames = $this->scandir($this->projectDir);
 
         foreach($this->filenames as $filename){
-            $this->lines[] = file($this->projectDir.'/'.$filename);
+            $this->lines = array_merge($this->lines,file($this->projectDir.'/'.$filename));
         }
+
+        array_walk($this->lines,function(&$line){
+            $line = trim($line);
+        });
+    }
+
+    public function getLines(){
+        return $this->lines;
     }
 
     /**
