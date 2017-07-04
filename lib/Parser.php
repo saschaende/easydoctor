@@ -25,9 +25,6 @@ class Parser {
                 // Add to toc
                 $this->addToc($i,$header[0],$header[1]);
                 // set an anchor
-                if($i != 1){
-                    #$this->linesParsed[] = '<pagebreak>';
-                }
                 $this->linesParsed[] = trim($line).'<a name="heading'.$i.'"></a>';
                 $i++;
             }else{

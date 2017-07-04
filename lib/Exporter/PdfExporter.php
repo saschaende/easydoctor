@@ -30,14 +30,13 @@ class PdfExporter extends Exporter
         $html = $this->getHtmlFromMarkdown($md);
 
         // pagebreaks
-        $html = str_replace('<h1>','<pagebreak><h1>',$html);
+        $html = str_replace('<h1','<pagebreak><h1',$html);
 
         // images
         $this->setAbsoluteImagePaths($html);
 
         // set contents
         $mpdf->WriteHTML('<html><body><article class="markdown-body">' . $toc.$html . '</article></body></html>');
-        echo $html;
 
         // save pdf
         $pdfPath = 'output/' . Arguments::get('p') . '/' . Arguments::get('p') . '.pdf';
