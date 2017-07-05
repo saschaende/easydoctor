@@ -3,6 +3,10 @@
 
 error_reporting(E_ERROR);
 
+/**
+ * @todo Watch task (Daniel Köthers Idee)
+ */
+
 // composer autoloader
 require_once __DIR__ . '/vendor/autoload.php';
 define('EASYDOCTORPATH',__DIR__);
