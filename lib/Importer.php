@@ -2,26 +2,31 @@
 
 namespace SaschaEnde\Easydoctor;
 
-class Importer {
+class Importer
+{
 
     private $projectDir;
     private $lines = [];
     private $filenames = [];
 
-    public function __construct(){
-        $this->projectDir = 'doc/'.Arguments::get('p');
+    public function __construct()
+    {
+        $this->projectDir = 'doc/' . Arguments::get('p');
         $this->filenames = $this->scandir($this->projectDir);
 
-        foreach($this->filenames as $filename){
-            $this->lines = array_merge($this->lines,file($this->projectDir.'/'.$filename));
+        foreach ($this->filenames as $filename) {
+            $this->lines = array_merge($this->lines, file($this->projectDir . '/' . $filename));
         }
 
-        array_walk($this->lines,function(&$line){
-            $line = trim($line);
-        });
+        // Macht probleme bei Code. Die Einrückungen sind dann verschwunden.
+        //        array_walk($this->lines,function(&$line){
+        //            $line = trim($line);
+        //        });
+
     }
 
-    public function getLines(){
+    public function getLines()
+    {
         return $this->lines;
     }
 

@@ -21,7 +21,7 @@ class Converter {
     }
 
     protected function getStringFromLines($lines){
-        return implode("\n",$lines);
+        return implode("",$lines);
     }
 
     /**
