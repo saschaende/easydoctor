@@ -97,7 +97,7 @@ Wenn alles eingerichtet ist, wechsele auf der linken Seite zum Menüpunkt "Searc
 
 ## Scheduler Tasks einrichten
 
-Damit die Indexierung tatsächlich durchgeführt wird, müssen
+Damit die Indexierung tatsächlich durchgeführt wird, müssen 
 
 # Anzeige der Suche und Ergebnisse
 
