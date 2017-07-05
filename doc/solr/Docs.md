@@ -97,13 +97,32 @@ Wenn alles eingerichtet ist, wechsele auf der linken Seite zum Menüpunkt "Searc
 
 ## Scheduler Tasks einrichten
 
-Damit die Indexierung tatsächlich durchgeführt wird, müssen 
+Damit die Indexierung tatsächlich durchgeführt wird, muss ein Scheduler Task eingerichtet werden, der auch manuell ausgeführt werden kann.
+
+* Wähle "Scheduler"
+* Füge einen neuen Task hinzu
+* Wähle aus der Oberkategorie solr den task "Index Queue Worker" aus
+* Klicke auf Speichern, damit wird der Task angelegt
+* Klicke in der Übersicht der Scheduler beim entsprechenden Task auf das play Symbol und "Run task"
+
+![Bild 5](images/scheduler.png)
 
 # Anzeige der Suche und Ergebnisse
 
 ## Seite anlegen
 
+Lege unterhalb des Page Roots eine Seite "Suche" an.
+
+![Bild 6](images/searchpage.png)
+
 ## Content Element einfügen
+
+Füge das Plugin "Search" auf der Seite ein.
+
+![Bild 7](images/add_plugin.png)
 
 ## Suchen
 
+Öffne die Seite "Suche" auf der Webseite und gebe "*" ein. Du solltest nun die ersten Inhalte sehen.
+
+![Bild 8](images/searchresults.png)
