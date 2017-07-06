@@ -41,7 +41,7 @@ class PdfExporter extends Exporter
 
         // TOC
         $toc = $this->getToc();
-        $mpdf->WriteHTML('<article class="markdown-body">'.$toc.'</article>');
+        $mpdf->WriteHTML($toc);
 
         // get contents
         $convertedLines = $this->converter->getConvertedLines();
@@ -83,6 +83,13 @@ class PdfExporter extends Exporter
     private function getToc()
     {
         $toc = $this->parser->getToc();
+        $tocPath = 'templates/pdf/toc.php';
+
+        ob_start();
+        require($tocPath);
+        return ob_get_clean();
+
+
         $data = [];
         $data[] = "# Inhalt";
         foreach($toc as $line){
