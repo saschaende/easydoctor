@@ -26,7 +26,7 @@ Arguments::getArguments();
 
 // checks
 if(!is_string(Arguments::get('p'))){
-    echo 'error: please define a project. Syntax: php easydoctor projectname';
+    echo 'error: please define a project. Syntax, for example: php easydoctor.php -p=test';
     exit;
 }
 
