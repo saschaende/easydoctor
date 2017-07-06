@@ -1,8 +1,11 @@
 # Easydoctor
 
-Fast and easy documentation generator for markdown files
+Fast and easy documentation generator for markdown files: Generate PDF, Latex, RST, HTML Website and many more formats.
 
-[Website](http://easydoctor.sascha-ende.de) | [Example 1 - Syntax tests](https://github.com/saschaende/easydoctor/raw/master/output/pdf/test.pdf)  | [Example 2 - The easydoc readme](https://github.com/saschaende/easydoctor/raw/master/output/pdf/easydoctor.pdf)
+[Website](http://easydoctor.sascha-ende.de)
+| [Example 1 - Syntax tests](https://github.com/saschaende/easydoctor/raw/master/output/pdf/test.pdf)
+| [Example 2 - The easydoc readme](https://github.com/saschaende/easydoctor/raw/master/output/pdf/easydoctor.pdf)
+| [Example 3 - TYPO3 solr](https://github.com/saschaende/easydoctor/raw/master/output/solr/solr.pdf)
 
 ## Features
 
@@ -38,11 +41,9 @@ Or create a new project with composer:
 
 ## Example
 
-Just execute this in your shell terminal:
+Just execute this in your shell terminal (modify the php interpreter path):
 
-``` 
-php easydoctor -p test
-```
+    G:\xampp\php\php.exe easydoctor.php -p=test
 
 This will make a pdf from the test project in your doc directory. You will find the pdf in `output/pdf`
 
@@ -50,9 +51,9 @@ This will make a pdf from the test project in your doc directory. You will find 
 
 Command | Description
 ------------- | -------------
-php easydoctor **-p** *project*  | project directory in "doc"
-php easydoctor **-v on**  | enable verbose, no output
-php easydoctor **-sh off**  | disable syntax highlight
+php easydoctor **-p**=*project*  | project directory in "doc"
+php easydoctor **-v**  | enable verbose, no output
+php easydoctor **-h**  | disable syntax highlight
 
 ## doc directory: Projects strucure
 
