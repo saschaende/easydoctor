@@ -40,9 +40,7 @@ Or create a new project with composer:
 
 Just execute this in your shell terminal:
 
-``` 
-php easydoctor -p test
-```
+    php easydoctor.php -p test
 
 This will make a pdf from the test project in your doc directory. You will find the pdf in `output/pdf`
 
