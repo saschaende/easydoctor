@@ -1,6 +1,6 @@
 # Easydoctor
 
-Fast and easy documentation generator for markdown files
+Fast and easy documentation generator for markdown files: Generate PDF, Latex, RST, HTML Website and many more formats.
 
 [Website](http://easydoctor.sascha-ende.de) | [Example 1 - Syntax tests](https://github.com/saschaende/easydoctor/raw/master/output/pdf/test.pdf)  | [Example 2 - The easydoc readme](https://github.com/saschaende/easydoctor/raw/master/output/pdf/easydoctor.pdf)
 
