@@ -128,3 +128,22 @@ Füge das Plugin "Search" auf der Seite ein.
 Öffne die Seite "Suche" auf der Webseite und gebe "*" ein. Du solltest nun die ersten Inhalte sehen.
 
 ![Bild 8](images/searchresults.png)
+
+# Anpassung
+
+## Anpassung der Templates in Version 7
+
+Der Pfad zu den Templates kann über folgendes Typoscript angepasst werden. Der entsprechende Vermerk dazu findet sich auch 
+in **Configuration/TypoScript/Solr/setup.txt**
+
+<div lang="typoscript">
+plugin.tx_solr {
+	// By convention the templates get loaded from EXT:solr/Resources/Private/Templates/Frontend/Search/(ActionName).html
+	// If you want to define a different entry template, you can do this here to overwrite the convensional default template
+	templateFiles {
+		frequentSearched = EXT:solr/Resources/Private/Templates/Search/FrequentlySearched.html
+		results = EXT:solr/Resources/Private/Templates/Search/Results.html
+		form = EXT:solr/Resources/Private/Templates/Search/Form.html
+	}
+}
+</div>
