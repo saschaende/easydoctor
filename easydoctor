@@ -18,6 +18,7 @@ use SaschaEnde\Easydoctor\Converter;
 use SaschaEnde\Easydoctor\Easydoctor;
 use SaschaEnde\Easydoctor\Exporter;
 use SaschaEnde\Easydoctor\Importer;
+use SaschaEnde\Easydoctor\PandocExporter;
 use SaschaEnde\Easydoctor\Parser;
 use SaschaEnde\Easydoctor\PdfExporter;
 
@@ -39,3 +40,6 @@ $converter = new Converter($parser->getParsedLines());
 // Export
 $pdfExporter = new PdfExporter($importer,$parser,$converter);
 $pdfExporter->execute();
+
+$pandocExporter = new PandocExporter($importer,$parser,$converter);
+$pandocExporter->execute();

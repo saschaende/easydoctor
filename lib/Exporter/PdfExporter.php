@@ -8,10 +8,17 @@ use function PhpQuery\pq;
 class PdfExporter extends Exporter
 {
 
-    var $debug = [];
-
     public function execute()
     {
+        // pdf?
+        if($this->settings['enable']['pdf'] == 1){
+            $this->printOutput('pdf export: enabled, start export');
+        }else{
+            $this->printOutput('pdf export: disabled');
+            return; // abort
+        }
+
+
         // first time, to generate page nums for the toc
         $mpdf = new \mPDF();
         $this->generatePdf($mpdf);
