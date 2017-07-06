@@ -76,6 +76,8 @@ Wichtig ist auch, dass die Root-Page als solche aktiviert ist.
 
 ![Bild 2](images/root_page.png) 
 
+* Aktviere die Checkbox bei **Use as Root Page**
+
 ## SOLR Connections intialisieren
 
 Als nächstes müssen die SOLR Connections aktiviert werden. Zum Initialisieren wähle aus dem Menü "Initialize Solr connections":

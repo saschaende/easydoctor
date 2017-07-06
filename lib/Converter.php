@@ -8,20 +8,23 @@ namespace SaschaEnde\Easydoctor;
  */
 class Converter {
 
-    private $md;
+    private $convertedLines;
 
     public function __construct($parsedLines = [])
     {
-        $this->md = $this->getStringFromLines($parsedLines);
-        $this->renderProgrammingCode($this->md);
+        foreach($parsedLines as $pageNum=>$page){
+            // create a string and parse things
+            $md = implode(PHP_EOL,$parsedLines[$pageNum]);
+            $this->renderProgrammingCode($md);
+
+            // get back an aray with lines
+            $parsedLines[$pageNum] = explode(PHP_EOL,$md);
+        }
+        $this->convertedLines = $parsedLines;
     }
 
-    public function getMarkdown(){
-        return $this->md;
-    }
-
-    protected function getStringFromLines($lines){
-        return implode("",$lines);
+    public function getConvertedLines(){
+        return $this->convertedLines;
     }
 
     /**

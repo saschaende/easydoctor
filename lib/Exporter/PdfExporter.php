@@ -8,10 +8,25 @@ use function PhpQuery\pq;
 class PdfExporter extends Exporter
 {
 
+    var $debug = [];
+
     public function execute()
     {
-
+        // first time, to generate page nums for the toc
         $mpdf = new \mPDF();
+        $this->generatePdf($mpdf);
+
+        // second time for output
+        $mpdf = new \mPDF();
+        $this->generatePdf($mpdf);
+
+        // save pdf
+        $pdfPath = 'output/' . Arguments::get('p') . '/' . Arguments::get('p') . '.pdf';
+        $this->checkExportDirectory();
+        $mpdf->Output($pdfPath, 'F');
+    }
+
+    private function generatePdf(\mPDF &$mpdf){
         $mpdf->setFooter('{PAGENO}');
 
         // load stylesheet
@@ -20,28 +35,49 @@ class PdfExporter extends Exporter
             $cssPath = 'templates/pdf/style.css';
         }
         $stylesheet = file_get_contents($cssPath);
-        $mpdf->WriteHTML('<style>' . $stylesheet . '</style>');
+
+        // set start of the document
+        $mpdf->WriteHTML('<html><header><style>' . $stylesheet . '</style></header><body><div class="page-body">');
 
         // TOC
         $toc = $this->getToc();
+        $mpdf->WriteHTML('<article class="markdown-body">'.$toc.'</article>');
 
         // get contents
-        $md = $this->converter->getMarkdown();
-        $html = $this->getHtmlFromMarkdown($md);
+        $convertedLines = $this->converter->getConvertedLines();
 
-        // pagebreaks
-        $html = str_replace('<h1','<pagebreak><h1',$html);
+        // Add Lines to pdf
+        $tocNum = 0;
+        foreach($convertedLines as $page){
 
-        // images
-        $this->setAbsoluteImagePaths($html);
+            // new page, if it is h1
+            $header = $this->parser->checkForHeader($page[0]);
+            if($header[1] == 'h1'){
+                $mpdf->AddPage();
+            }
+
+            // get the actual page
+            $pageNo = $mpdf->PageNo();
+
+            // update pagenum on toc
+            if($header[1] == 'h1' || $header[1] == 'h2'){
+                $this->parser->updateToc($tocNum,'page',$pageNo);
+                $tocNum++;
+            }
+
+            // get a string from the lines
+            $md = implode(PHP_EOL,$page);
+            // convert to html
+            $html = $this->getHtmlFromMarkdown($md);
+            // images
+            $this->setAbsoluteImagePaths($html);
+
+            // add the html to the pdf
+            $mpdf->WriteHTML('<article class="markdown-body">'.$html.'</article>');
+        }
 
         // set contents
-        $mpdf->WriteHTML('<html><body><article class="markdown-body">' . $toc.$html . '</article></body></html>');
-
-        // save pdf
-        $pdfPath = 'output/' . Arguments::get('p') . '/' . Arguments::get('p') . '.pdf';
-        $this->checkExportDirectory();
-        $mpdf->Output($pdfPath, 'F');
+        $mpdf->WriteHTML('</div></body></html>');
     }
 
     private function getToc()
@@ -51,13 +87,12 @@ class PdfExporter extends Exporter
         $data[] = "# Inhalt";
         foreach($toc as $line){
             if($line['type'] == 'h1'){
-                $data[] = '* **['.$line['title'].'](#heading'.$line['num'].')**';
+                $data[] = '* **['.$line['title'].'](#heading'.$line['num'].')** [Seite '.$line['page'].']';
             }else{
-                $data[] = '     * ['.$line['title'].'](#heading'.$line['num'].')';
+                $data[] = '     * ['.$line['title'].'](#heading'.$line['num'].') [Seite '.$line['page'].']';
             }
 
         }
         return $this->getHtmlFromMarkdown(implode("\n",$data));
     }
-
 }

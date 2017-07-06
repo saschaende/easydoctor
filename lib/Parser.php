@@ -18,17 +18,19 @@ class Parser {
     public function __construct($lines = [])
     {
         // Check for headers
-        $i = 1;
+        $i = 0;
         foreach($lines as $lineNum=>$line){
+            $this->removeNewlines($line);
             $header = $this->checkForHeader($line);
             if($header){
+                // increment the heading
+                $i++;
                 // Add to toc
                 $this->addToc($i,$header[0],$header[1]);
                 // set an anchor
-                $this->linesParsed[] = trim($line).'<a name="heading'.$i.'"></a>';
-                $i++;
+                $this->linesParsed[$i][] = $line.'<a name="heading'.$i.'"></a>';
             }else{
-                $this->linesParsed[] = $line;
+                $this->linesParsed[$i][] = $line;
             }
         }
     }
@@ -39,6 +41,10 @@ class Parser {
      */
     public function getToc(){
         return $this->toc;
+    }
+
+    public function removeNewlines(&$md){
+        $md = str_replace(PHP_EOL,'',$md);
     }
 
     /**
@@ -55,12 +61,17 @@ class Parser {
      * @param $title
      * @param $type
      */
-    private function addToc($num,$title,$type){
+    public function addToc($num,$title,$type){
         $this->toc[] = [
             'num'   =>  $num,
             'title' =>  $title,
-            'type'  =>  $type
+            'type'  =>  $type,
+            'page'  =>  0
         ];
+    }
+
+    public function updateToc($pos,$key,$value){
+        $this->toc[$pos][$key] = $value;
     }
 
     /**
