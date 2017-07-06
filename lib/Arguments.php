@@ -9,17 +9,20 @@ class Arguments
 
     public static function getArguments()
     {
-        for ($i = 0; $i < count($_SERVER['argv']); $i++) {
-            if (substr($_SERVER['argv'][$i], 0, 1) == '-' && !empty($_SERVER['argv'][$i + 1])) {
-                $argument = substr($_SERVER['argv'][$i], 1);
-                $value = $_SERVER['argv'][$i + 1];
-                self::$args[$argument] = $value;
-            }
-        }
+        // p: (required parameter with value)
+        // v (optional parameter without value)
+        // h (optional parameter without value)
+        self::$args = getopt('p:vh');
     }
 
     public static function get($key){
-        return self::$args[$key];
+        if(!empty(self::$args[$key])){
+            return self::$args[$key];
+        }
+        elseif(isset(self::$args[$key])){
+            return true;
+        }
+
     }
 
 }

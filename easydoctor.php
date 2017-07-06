@@ -25,7 +25,7 @@ use SaschaEnde\Easydoctor\PdfExporter;
 Arguments::getArguments();
 
 // checks
-if(empty(Arguments::get('p'))){
+if(!is_string(Arguments::get('p'))){
     echo 'error: please define a project. Syntax: php easydoctor projectname';
     exit;
 }

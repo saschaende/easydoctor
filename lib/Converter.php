@@ -44,7 +44,7 @@ class Converter {
     protected function renderProgrammingCode(&$md)
     {
         // syntax highlighting disabled
-        if (Arguments::get('sh') == 'off') {
+        if (Arguments::get('h')) {
             return;
         }
         // syntax highlighting enabled

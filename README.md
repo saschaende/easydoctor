@@ -38,9 +38,9 @@ Or create a new project with composer:
 
 ## Example
 
-Just execute this in your shell terminal:
+Just execute this in your shell terminal (modify the php interpreter path):
 
-    php easydoctor.php -p test
+    G:\xampp\php\php.exe easydoctor.php -p=test
 
 This will make a pdf from the test project in your doc directory. You will find the pdf in `output/pdf`
 
@@ -48,9 +48,9 @@ This will make a pdf from the test project in your doc directory. You will find 
 
 Command | Description
 ------------- | -------------
-php easydoctor **-p** *project*  | project directory in "doc"
-php easydoctor **-v on**  | enable verbose, no output
-php easydoctor **-sh off**  | disable syntax highlight
+php easydoctor **-p**=*project*  | project directory in "doc"
+php easydoctor **-v**  | enable verbose, no output
+php easydoctor **-h**  | disable syntax highlight
 
 ## doc directory: Projects strucure
 

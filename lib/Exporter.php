@@ -142,10 +142,9 @@ class Exporter
      */
     public function printOutput($text)
     {
-        if (Arguments::get('v') == 'on') {
-            return;
+        if (!Arguments::get('v')) {
+            echo '* ' . $text . "\n";
         }
-        echo '* ' . $text . "\n";
     }
 
 }
