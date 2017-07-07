@@ -53,6 +53,23 @@ class Exporter
     }
 
     /**
+     * Get the whole content as markdown
+     * @return string
+     */
+    public function getAllAsMarkdown(){
+        // get contents
+        $convertedLines = $this->converter->getConvertedLines();
+        // make a string
+        $str = [];
+        foreach($convertedLines as $page){
+            foreach($page as $line){
+                $str[] = $line;
+            }
+        }
+        return implode(PHP_EOL,$str);
+    }
+
+    /**
      * Build TOC in markdown
      * @return mixed|string
      */
