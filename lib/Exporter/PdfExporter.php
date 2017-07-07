@@ -92,21 +92,9 @@ class PdfExporter extends Exporter
         $toc = $this->parser->getToc();
         $tocPath = 'templates/pdf/toc.php';
 
+        // execute include and return the results
         ob_start();
         require($tocPath);
         return ob_get_clean();
-
-
-        $data = [];
-        $data[] = "# Inhalt";
-        foreach($toc as $line){
-            if($line['type'] == 'h1'){
-                $data[] = '* **['.$line['title'].'](#heading'.$line['num'].')** [Seite '.$line['page'].']';
-            }else{
-                $data[] = '     * ['.$line['title'].'](#heading'.$line['num'].') [Seite '.$line['page'].']';
-            }
-
-        }
-        return $this->getHtmlFromMarkdown(implode("\n",$data));
     }
 }
