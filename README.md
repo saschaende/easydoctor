@@ -33,7 +33,7 @@ Fast and easy documentation generator for markdown files: Generate PDF, Latex, R
 
 Download [latest release](https://github.com/saschaende/easydoctor/releases/latest) and unzip it to a directory **or** clone from git:
 
-    git clone git@github.com:saschaende/easydoctor.gi
+    git clone git@github.com:saschaende/easydoctor.git
     
 Or create a new project with composer:
 
@@ -49,11 +49,11 @@ This will make a pdf from the test project in your doc directory. You will find 
 
 ## Arguments
 
-Command | Description
-------------- | -------------
-php easydoctor **-p**=*project*  | project directory in "doc"
-php easydoctor **-v**  | enable verbose, no output
-php easydoctor **-h**  | disable syntax highlight
+Command                                 | Description
+-------------                           | -------------
+php easydoctor.php **-p**=*project*     | project directory in "doc"
+php easydoctor.php **-v**               | enable verbose, no output
+php easydoctor.php **-h**               | disable syntax highlight
 
 ## doc directory: Projects strucure
 
@@ -72,13 +72,15 @@ php easydoctor **-h**  | disable syntax highlight
 * Define the ordering by naming the files for example with numbers
 * You can configure easydoc with ``easydoctor.ini``
 
-## Syntax highlight for programming languages in your markdown files
+# Syntax highlighting
+
+## How to use
 
 Example:
 
     <div lang="php">YOUR PHP CODE</div>
     
-Supported languages:
+## Supported languages:
     
 * 4cs 
 * 6502acme 
