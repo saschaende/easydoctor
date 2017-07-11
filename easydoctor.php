@@ -21,6 +21,7 @@ use SaschaEnde\Easydoctor\Importer;
 use SaschaEnde\Easydoctor\PandocExporter;
 use SaschaEnde\Easydoctor\Parser;
 use SaschaEnde\Easydoctor\PdfExporter;
+use SaschaEnde\Easydoctor\HtmlExporter;
 
 Arguments::getArguments();
 
@@ -43,3 +44,6 @@ $pdfExporter->execute();
 
 $pandocExporter = new PandocExporter($importer,$parser,$converter);
 $pandocExporter->execute();
+
+$htmlExporter = new HtmlExporter($importer,$parser,$converter);
+$htmlExporter->execute();
