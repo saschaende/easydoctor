@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Dokumentation</title>
+
+    <!-- Bootstrap -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="vendor/bootstrap/css/bootstrap-theme.min.css" rel="stylesheet">
+    <link href="vendor/theme/theme.css" rel="stylesheet">
+    <link href="vendor/theme/markdown.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+
+<div class="jumbotron">
+    <div class="container">
+        <h1>Dokumentation</h1>
+    </div>
+</div><!--end of .jumbotron-->
+
+<div class="container">
+    <div class="row">
+
+        <div class="col-md-3">
+            <div id="toc"><ul>
+<li><a href="#page1">Überschrift</a>
+<ul>
+<li><a href="#part1">Unterrubrik</a></li>
+<li><a href="#part2">Noch eine Unterrubrik</a></li>
+</ul></li>
+<li><a href="#page2">Überschrift 2</a>
+<ul>
+<li><a href="#part3">Unterrubrik 2</a></li>
+</ul></li>
+</ul></div>
+        </div>
+
+        <div class="col-md-9">
+            <article class="markdown-body">
+<h1 id="page1">Überschrift</h1>
+<p>Willkommen in der <strong>Dokumentation</strong>.</p>
+<h2 id="part1">Unterrubrik</h2>
+<pre><code><span style="color: #000000; font-weight: bold;">&lt;?php</span><br><span style="color: #b1b100;">echo</span> <span style="color: #0000ff;">"Hallo Welt!"</span><span style="color: #339933;">;</span><br><span style="color: #000000; font-weight: bold;">?&gt;</span></code></pre>
+<p>Dies ist <a href="http://example.com/" title="Optionalen Titel hier eintragen">ein Beispiel</a> für einen Referenz-Link.</p>
+<p>Dies ist <a href="http://example.com/" title="Der Linktitel">ein Beispiel</a> für
+einen Inline-Link.</p>
+<ol>
+<li>Erstens
+<ul>
+<li>Huhu</li>
+<li>Huhu 2</li>
+</ul>
+</li>
+<li>Zweitens</li>
+</ol>
+<ul>
+<li>Und</li>
+<li>Nochmal</li>
+</ul>
+<h2 id="part2">Noch eine Unterrubrik</h2>
+<p>Echt toll, sogar mit Bild</p>
+<p><img src="images/example.jpg" alt="Beispielbild" class="img-responsive"></p>
+<h3>Systemanforderungen</h3>
+<p>Sehr cool</p>
+<h1 id="page2">Überschrift 2</h1>
+<p>Willkommen in der Dokumentation.</p>
+<h2 id="part3">Unterrubrik 2</h2>
+<p>That's some text with a footnote.<sup id="fnref1:1"><a href="#fn:1" class="footnote-ref">1</a></sup></p>
+<pre><code>&lt;?php
+echo "Hallo Welt!";
+?&gt;</code></pre>
+<ol>
+<li>Erstens</li>
+<li>Zweitens</li>
+</ol>
+<ul>
+<li>Und</li>
+<li>Nochmal</li>
+</ul>
+<blockquote>
+<p>Errare humanum est
+(Julius Caesar)</p>
+</blockquote>
+<h3>Systemanforderungen 2</h3>
+<table>
+<thead><tr>
+<th>First Header</th>
+<th>Second Header</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>Content Cell</td>
+<td>Content Cell</td>
+</tr>
+<tr>
+<td>Content Cell</td>
+<td>Content Cell</td>
+</tr>
+</tbody>
+</table>
+<div class="footnotes">
+<hr>
+<ol>
+<li id="fn:1">
+<p>And that's the footnote. <a href="#fnref1:1" rev="footnote" class="footnote-backref">↩</a></p>
+</li>
+</ol>
+</div>
+</article>
+        </div>
+
+    </div><!--end of .row-->
+</div><!--end of .container-->
+
+<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="vendor/theme/theme.js"></script>
+</body>
+</html>

@@ -5,6 +5,11 @@ namespace SaschaEnde\Easydoctor;
 use PhpQuery\phpQuery;
 use function PhpQuery\pq;
 
+/**
+ * Class PdfExporter
+ * @package SaschaEnde\Easydoctor
+ * @todo Verlinkung im TOC wieder fixen
+ */
 class PdfExporter extends Exporter
 {
 

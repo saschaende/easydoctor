@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Dokumentation</title>
+
+    <!-- Bootstrap -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="vendor/bootstrap/css/bootstrap-theme.min.css" rel="stylesheet">
+    <link href="vendor/theme/theme.css" rel="stylesheet">
+    <link href="vendor/theme/markdown.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+
+<div class="jumbotron">
+    <div class="container">
+        <h1>Dokumentation</h1>
+    </div>
+</div><!--end of .jumbotron-->
+
+<div class="container">
+    <div class="row">
+
+        <div class="col-md-3">
+            <div id="toc"><ul>
+<li><a href="#page1">Easydoctor</a>
+<ul>
+<li><a href="#part1">Features</a></li>
+<li><a href="#part2">Planned</a></li>
+<li><a href="#part3">Installation</a></li>
+<li><a href="#part4">Example</a></li>
+<li><a href="#part5">Arguments</a></li>
+<li><a href="#part6">doc directory: Projects strucure</a></li>
+<li><a href="#part7">Important to know</a></li>
+</ul></li>
+<li><a href="#page2">Syntax highlighting</a>
+<ul>
+<li><a href="#part8">How to use</a></li>
+<li><a href="#part9">Supported languages:</a></li>
+</ul></li>
+</ul></div>
+        </div>
+
+        <div class="col-md-9">
+            <article class="markdown-body">
+<h1 id="page1">Easydoctor</h1>
+<p>Fast and easy documentation generator for markdown files: Generate PDF, Latex, RST, HTML Website and many more formats.</p>
+<p><a href="http://easydoctor.sascha-ende.de">Website</a>
+| <a href="https://github.com/saschaende/easydoctor/raw/master/output/pdf/test.pdf">Example 1 - Syntax tests</a>
+| <a href="https://github.com/saschaende/easydoctor/raw/master/output/pdf/easydoctor.pdf">Example 2 - The easydoc readme</a>
+| <a href="https://github.com/saschaende/easydoctor/raw/master/output/solr/solr.pdf">Example 3 - TYPO3 solr</a></p>
+<h2 id="part1">Features</h2>
+<ul>
+<li>Use markdown to write your documentation</li>
+<li>Every chapter one file</li>
+<li>Super Fast</li>
+<li><a href="https://help.github.com/articles/github-flavored-markdown">GitHub flavored</a></li>
+<li><a href="https://github.com/erusev/parsedown-extra">Markdown Extra support</a></li>
+<li>Table of contents will be automatically generated from h1 and h2</li>
+<li>Syntax highlighting for 287 programming languages</li>
+<li>Export to:
+<ul>
+<li>PDF</li>
+<li>Plain HTML (<a href="http://pandoc.org/" title="Pandoc">Pandoc</a> required)</li>
+<li>Latex (<a href="http://pandoc.org/" title="Pandoc">Pandoc</a> required)</li>
+<li>Restructured text (<a href="http://pandoc.org/" title="Pandoc">Pandoc</a> required)</li>
+<li>RTF (<a href="http://pandoc.org/" title="Pandoc">Pandoc</a> required)</li>
+<li>ODT (<a href="http://pandoc.org/" title="Pandoc">Pandoc</a> required)</li>
+</ul>
+</li>
+</ul>
+<h2 id="part2">Planned</h2>
+<ul>
+<li>Generate website from markdown</li>
+<li>Syntax highlight support for more languages</li>
+</ul>
+<h2 id="part3">Installation</h2>
+<p>Download <a href="https://github.com/saschaende/easydoctor/releases/latest">latest release</a> and unzip it to a directory <strong>or</strong> clone from git:</p>
+<pre><code>git clone git@github.com:saschaende/easydoctor.git</code></pre>
+<p>Or create a new project with composer:</p>
+<pre><code>composer create-project saschaende/easydoctor</code></pre>
+<h2 id="part4">Example</h2>
+<p>Just execute this in your shell terminal (modify the php interpreter path):</p>
+<pre><code>G:\xampp\php\php.exe easydoctor.php -p=test</code></pre>
+<p>This will make a pdf from the test project in your doc directory. You will find the pdf in <code>output/pdf</code></p>
+<h2 id="part5">Arguments</h2>
+<table>
+<thead><tr>
+<th>Command</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>php easydoctor.php <strong>-p</strong>=<em>project</em>
+</td>
+<td>project directory in "doc"</td>
+</tr>
+<tr>
+<td>php easydoctor.php <strong>-v</strong>
+</td>
+<td>enable verbose, no output</td>
+</tr>
+<tr>
+<td>php easydoctor.php <strong>-h</strong>
+</td>
+<td>disable syntax highlight</td>
+</tr>
+</tbody>
+</table>
+<h2 id="part6">doc directory: Projects strucure</h2>
+<ul>
+<li>doc
+<ul>
+<li>project
+<ul>
+<li>CSS for documentation: css/style.css</li>
+<li>Images for your documentation project: images/*</li>
+<li>doc1.md</li>
+<li>doc2.md</li>
+<li>...</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="part7">Important to know</h2>
+<ul>
+<li>Every documentation page only has one h1, this will be used for table of contents</li>
+<li>h2 will be used as subpages in the table of contents</li>
+<li>Define the ordering by naming the files for example with numbers</li>
+<li>You can configure easydoc with <code>easydoctor.ini</code>
+</li>
+</ul>
+<h1 id="page2">Syntax highlighting</h1>
+<h2 id="part8">How to use</h2>
+<p>Example:</p>
+<pre><code>&lt;pre&gt;&lt;code&gt;YOUR PHP CODE&lt;/code&gt;&lt;/pre&gt;</code></pre>
+<h2 id="part9">Supported languages:</h2>
+<ul>
+<li>4cs </li>
+<li>6502acme </li>
+<li>6502kickass </li>
+<li>6502tasm </li>
+<li>68000devpac </li>
+<li>abap </li>
+<li>actionscript </li>
+<li>actionscript3 </li>
+<li>ada </li>
+<li>aimms </li>
+<li>algol68 </li>
+<li>apache </li>
+<li>applescript </li>
+<li>apt_sources </li>
+<li>arm </li>
+<li>asm </li>
+<li>asp </li>
+<li>asymptote </li>
+<li>autoconf </li>
+<li>autohotkey </li>
+<li>autoit </li>
+<li>avisynth </li>
+<li>awk </li>
+<li>bascomavr </li>
+<li>bash </li>
+<li>basic4gl </li>
+<li>batch </li>
+<li>bf </li>
+<li>biblatex </li>
+<li>bibtex </li>
+<li>blitzbasic </li>
+<li>bnf </li>
+<li>boo </li>
+<li>c </li>
+<li>c_loadrunner </li>
+<li>c_mac </li>
+<li>c_winapi </li>
+<li>caddcl </li>
+<li>cadlisp </li>
+<li>ceylon </li>
+<li>cfdg </li>
+<li>cfm </li>
+<li>chaiscript </li>
+<li>chapel </li>
+<li>cil </li>
+<li>clojure </li>
+<li>cmake </li>
+<li>cobol </li>
+<li>coffeescript </li>
+<li>cpp-qt </li>
+<li>cpp-winapi </li>
+<li>cpp </li>
+<li>csharp </li>
+<li>css </li>
+<li>cuesheet </li>
+<li>d </li>
+<li>dart </li>
+<li>dcl </li>
+<li>dcpu16 </li>
+<li>dcs </li>
+<li>delphi </li>
+<li>diff </li>
+<li>div </li>
+<li>dos </li>
+<li>dot </li>
+<li>e </li>
+<li>ecmascript </li>
+<li>eiffel </li>
+<li>email </li>
+<li>epc </li>
+<li>erlang </li>
+<li>euphoria </li>
+<li>ezt </li>
+<li>f1 </li>
+<li>falcon </li>
+<li>fo </li>
+<li>fortran </li>
+<li>freebasic </li>
+<li>freeswitch </li>
+<li>fsharp </li>
+<li>gambas </li>
+<li>gdb </li>
+<li>genero </li>
+<li>genie </li>
+<li>gettext </li>
+<li>glsl </li>
+<li>gml </li>
+<li>gnuplot </li>
+<li>go </li>
+<li>groovy </li>
+<li>gwbasic </li>
+<li>haskell </li>
+<li>haxe </li>
+<li>hicest </li>
+<li>hq9plus </li>
+<li>html4strict </li>
+<li>html5 </li>
+<li>icon </li>
+<li>idl </li>
+<li>ini </li>
+<li>inno </li>
+<li>intercal </li>
+<li>io </li>
+<li>ispfpanel </li>
+<li>j </li>
+<li>java </li>
+<li>java5 </li>
+<li>javascript </li>
+<li>jcl </li>
+<li>jquery </li>
+<li>julia </li>
+<li>kixtart </li>
+<li>klonec </li>
+<li>klonecpp </li>
+<li>kotlin </li>
+<li>latex </li>
+<li>lb </li>
+<li>ldif </li>
+<li>lisp </li>
+<li>llvm </li>
+<li>locobasic </li>
+<li>logtalk </li>
+<li>lolcode </li>
+<li>lotusformulas </li>
+<li>lotusscript </li>
+<li>lscript </li>
+<li>lsl2 </li>
+<li>lua </li>
+<li>m68k </li>
+<li>magiksf </li>
+<li>make </li>
+<li>mapbasic </li>
+<li>mathematica </li>
+<li>matlab </li>
+<li>mercury </li>
+<li>metapost </li>
+<li>mirc </li>
+<li>mk-61 </li>
+<li>mmix </li>
+<li>modula2 </li>
+<li>modula3 </li>
+<li>mpasm </li>
+<li>mxml </li>
+<li>mysql </li>
+<li>nagios </li>
+<li>netrexx </li>
+<li>newlisp </li>
+<li>nginx </li>
+<li>nimrod </li>
+<li>nsis </li>
+<li>oberon2 </li>
+<li>objc </li>
+<li>objeck </li>
+<li>ocaml-brief </li>
+<li>ocaml </li>
+<li>octave </li>
+<li>oobas </li>
+<li>oorexx </li>
+<li>oracle11 </li>
+<li>oracle8 </li>
+<li>oxygene </li>
+<li>oz </li>
+<li>parasail </li>
+<li>parigp </li>
+<li>pascal </li>
+<li>pcre </li>
+<li>per </li>
+<li>perl </li>
+<li>perl6 </li>
+<li>pf </li>
+<li>phix </li>
+<li>php-brief </li>
+<li>php </li>
+<li>pic16 </li>
+<li>pike </li>
+<li>pixelbender </li>
+<li>pli </li>
+<li>plsql </li>
+<li>postgresql </li>
+<li>postscript </li>
+<li>povray </li>
+<li>powerbuilder </li>
+<li>powershell </li>
+<li>proftpd </li>
+<li>progress </li>
+<li>prolog </li>
+<li>properties </li>
+<li>providex </li>
+<li>purebasic </li>
+<li>pycon </li>
+<li>pys60 </li>
+<li>python </li>
+<li>q </li>
+<li>qbasic </li>
+<li>qml </li>
+<li>racket </li>
+<li>rails </li>
+<li>rbs </li>
+<li>rebol </li>
+<li>reg </li>
+<li>rexx </li>
+<li>robots </li>
+<li>rpmspec </li>
+<li>rsplus </li>
+<li>ruby </li>
+<li>rust </li>
+<li>sas </li>
+<li>sass </li>
+<li>scala </li>
+<li>scheme </li>
+<li>scilab </li>
+<li>scl </li>
+<li>sdlbasic </li>
+<li>smalltalk </li>
+<li>smarty </li>
+<li>spark </li>
+<li>sparql </li>
+<li>sql </li>
+<li>standardml </li>
+<li>stonescript </li>
+<li>swift </li>
+<li>systemverilog </li>
+<li>tcl </li>
+<li>tclegg </li>
+<li>teraterm </li>
+<li>texgraph </li>
+<li>text </li>
+<li>thinbasic </li>
+<li>tsql </li>
+<li>twig </li>
+<li>typoscript </li>
+<li>unicon </li>
+<li>upc </li>
+<li>urbi </li>
+<li>uscript </li>
+<li>vala </li>
+<li>vb </li>
+<li>vbnet </li>
+<li>vbscript </li>
+<li>vedit </li>
+<li>verilog </li>
+<li>vhdl </li>
+<li>vim </li>
+<li>visualfoxpro </li>
+<li>visualprolog </li>
+<li>whitespace </li>
+<li>whois </li>
+<li>winbatch </li>
+<li>xbasic </li>
+<li>xml </li>
+<li>xojo </li>
+<li>xorg_conf </li>
+<li>xpp </li>
+<li>xyscript </li>
+<li>yaml </li>
+<li>z80 </li>
+<li>zxbasic </li>
+</ul>
+</article>
+        </div>
+
+    </div><!--end of .row-->
+</div><!--end of .container-->
+
+<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="vendor/theme/theme.js"></script>
+</body>
+</html>

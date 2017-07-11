@@ -1,11 +1,10 @@
 #!/usr/bin/env php
 <?php
 
-error_reporting(E_ALL);
+error_reporting(E_ERROR);
 
 /**
  * @todo Watch task (Daniel Köthers Idee)
- * @todo Mediawiki export
  */
 
 // composer autoloader

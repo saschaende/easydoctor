@@ -20,45 +20,31 @@ class HtmlExporter extends Exporter
         $this->checkExportDirectory('html');
         // copy folders
         $this->copyDocFolder('images', 'html');
-        $this->copyTemplateFolder('dist', 'html');
-        $this->copyTemplateFolder('js', 'html');
         $this->copyTemplateFolder('vendor', 'html');
 
         // get contents
-        $convertedLines = $this->converter->getConvertedLines();
+        $mdContents = $this->getAllAsMarkdown();
+        $html = $this->getHtmlFromMarkdown($mdContents);
+
+        // make images responsive
+        $this->setResponsiveImages($html);
+
+        // add ids to the headers
+        $this->addHeaderIds($html);
 
         // get menue
         $menue = $this->getMenue();
 
-        $pageNum = 1;
-        foreach ($convertedLines as $page) {
-            // new page, if it is h1
-            $header = $this->parser->checkForHeader($page[0]);
-            if($header[1] == 'h1'){
-                // new page
-            }
-
-            // get a string from the lines
-            $md = implode(PHP_EOL, $page);
-            // convert to html
-            $html = $this->getHtmlFromMarkdown($md);
-            // render
-            $this->renderPage($html,$menue,'page'.$pageNum.'.html');
-            // increment page
-            $pageNum++;
-        }
+        // render
+        $this->renderPage($html,$menue,'index.html');
 
 
     }
 
     public function getMenue()
     {
-        $toc = $this->parser->getToc();
-        $tocPath = 'templates/html/toc.php';
-        // execute include and return the results
-        ob_start();
-        require($tocPath);
-        return ob_get_clean();
+        $md = $this->getMarkdownToc();
+        return $this->getHtmlFromMarkdown($md);
     }
 
     /**

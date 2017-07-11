@@ -28,7 +28,7 @@ class Parser {
                 // Add to toc
                 $this->addToc($i,$header[0],$header[1]);
                 // set an anchor
-                $this->linesParsed[$i][] = $line.'<a name="heading'.$i.'"></a>';
+                $this->linesParsed[$i][] = $line;
             }else{
                 $this->linesParsed[$i][] = $line;
             }

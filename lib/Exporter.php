@@ -2,6 +2,7 @@
 
 namespace SaschaEnde\Easydoctor;
 
+use function file_exists;
 use PhpQuery\phpQuery;
 use function PhpQuery\pq;
 
@@ -53,20 +54,56 @@ class Exporter
     }
 
     /**
+     * Crawl the code and set imagepaths absolute
+     * @param $html
+     */
+    public function setResponsiveImages(&$html)
+    {
+        // images
+        $doc = phpQuery::newDocument($html);
+        foreach ($doc->find('img') as $img) {
+            pq($img)->addClass('img-responsive');
+        }
+        $html = $doc->getDocument();
+    }
+
+    /**
+     * Crawl the code and set imagepaths absolute
+     * @param $html
+     */
+    public function addHeaderIds(&$html)
+    {
+        // images
+        $doc = phpQuery::newDocument($html);
+        $i = 1;
+        foreach ($doc->find('h1') as $h) {
+            pq($h)->attr('id', 'page' . $i);
+            $i++;
+        }
+        $i = 1;
+        foreach ($doc->find('h2') as $h) {
+            pq($h)->attr('id', 'part' . $i);
+            $i++;
+        }
+        $html = $doc->getDocument();
+    }
+
+    /**
      * Get the whole content as markdown
      * @return string
      */
-    public function getAllAsMarkdown(){
+    public function getAllAsMarkdown()
+    {
         // get contents
         $convertedLines = $this->converter->getConvertedLines();
         // make a string
         $str = [];
-        foreach($convertedLines as $page){
-            foreach($page as $line){
+        foreach ($convertedLines as $page) {
+            foreach ($page as $line) {
                 $str[] = $line;
             }
         }
-        return implode(PHP_EOL,$str);
+        return implode(PHP_EOL, $str);
     }
 
     /**
@@ -78,16 +115,19 @@ class Exporter
         $toc = $this->parser->getToc();
 
         $data = [];
-        $data[] = "# Inhaltsverzeichnis";
-        foreach($toc as $line){
-            if($line['type'] == 'h1'){
-                $data[] = '* **['.$line['title'].'](#heading'.$line['num'].')**';
-            }else{
-                $data[] = '     * ['.$line['title'].'](#heading'.$line['num'].')';
+        $h1count = 1;
+        $h2count = 1;
+        foreach ($toc as $line) {
+            if ($line['type'] == 'h1') {
+                $data[] = '* [' . $line['title'] . '](#page'.$h1count.')';
+                $h1count++;
+            } else {
+                $data[] = '     * [' . $line['title'].'](#part'.$h2count.')';
+                $h2count++;
             }
 
         }
-        return implode(PHP_EOL,$data);
+        return implode(PHP_EOL, $data);
     }
 
     public function checkExportDirectory($type = false)
@@ -110,11 +150,11 @@ class Exporter
      * @param $folder The folder like images or css
      * @param $type The type like pdf, rst...
      */
-    public function copyDocFolder($folder,$type)
+    public function copyDocFolder($folder, $type)
     {
         // define paths
-        $originDir = 'doc/' . Arguments::get('p') . '/'.$folder;
-        $targetDir = 'output/' . Arguments::get('p') . '/' . $type . '/'.$folder;
+        $originDir = 'doc/' . Arguments::get('p') . '/' . $folder;
+        $targetDir = 'output/' . Arguments::get('p') . '/' . $type . '/' . $folder;
         // delete old dir, if exists
         $this->rrmdir($targetDir);
         // copy
@@ -128,8 +168,8 @@ class Exporter
     public function copyTemplateFolder($folder, $type)
     {
         // define paths
-        $originDir = 'templates/' . $type . '/'.$folder;
-        $targetDir = 'output/' . Arguments::get('p') . '/' . $type . '/'.$folder;
+        $originDir = 'templates/' . $type . '/' . $folder;
+        $targetDir = 'output/' . Arguments::get('p') . '/' . $type . '/' . $folder;
         // delete old dir, if exists
         $this->rrmdir($targetDir);
         // copy
@@ -138,6 +178,9 @@ class Exporter
 
     public function recurse_copy($src, $dst)
     {
+        if(!file_exists($src)){
+            return false;
+        }
         $dir = opendir($src);
         @mkdir($dst);
         while (false !== ($file = readdir($dir))) {
