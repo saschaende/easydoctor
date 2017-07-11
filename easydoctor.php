@@ -14,7 +14,6 @@ define('EASYDOCTORPATH',__DIR__);
 // Require composer autoloader and load libraries
 use SaschaEnde\Easydoctor\Arguments;
 use SaschaEnde\Easydoctor\Converter;
-use SaschaEnde\Easydoctor\Easydoctor;
 use SaschaEnde\Easydoctor\Exporter;
 use SaschaEnde\Easydoctor\Importer;
 use SaschaEnde\Easydoctor\PandocExporter;
