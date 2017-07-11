@@ -121,6 +121,21 @@ class Exporter
         $this->recurse_copy($originDir, $targetDir);
     }
 
+    /**
+     * @param $folder The folder like images or css
+     * @param $type The type like pdf, rst...
+     */
+    public function copyTemplateFolder($folder, $type)
+    {
+        // define paths
+        $originDir = 'templates/' . $type . '/'.$folder;
+        $targetDir = 'output/' . Arguments::get('p') . '/' . $type . '/'.$folder;
+        // delete old dir, if exists
+        $this->rrmdir($targetDir);
+        // copy
+        $this->recurse_copy($originDir, $targetDir);
+    }
+
     public function recurse_copy($src, $dst)
     {
         $dir = opendir($src);
