@@ -159,7 +159,7 @@ class Exporter
             foreach ($objects as $object) {
                 if ($object != "." && $object != "..") {
                     if (is_dir($dir . "/" . $object))
-                        rrmdir($dir . "/" . $object);
+                        $this->rrmdir($dir . "/" . $object);
                     else
                         unlink($dir . "/" . $object);
                 }

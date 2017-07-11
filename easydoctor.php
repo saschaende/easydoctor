@@ -1,7 +1,7 @@
 #!/usr/bin/env php
 <?php
 
-error_reporting(E_ERROR);
+error_reporting(E_ALL);
 
 /**
  * @todo Watch task (Daniel Köthers Idee)
