@@ -52,8 +52,8 @@ This will make a pdf from the test project in your doc directory. You will find 
 Command                                 | Description
 -------------                           | -------------
 php easydoctor.php **-p**=*project*     | project directory in "doc"
-php easydoctor.php **-v**               | enable verbose, no output
-php easydoctor.php **-h**               | disable syntax highlight
+php easydoctor.php **--v**               | enable verbose, no output
+php easydoctor.php **--h**               | disable syntax highlight
 
 ## doc directory: Projects strucure
 
