@@ -53,7 +53,7 @@ class PandocExporter extends Exporter
 
         file_put_contents($tmp_path, $toc.PHP_EOL.$contents);
 
-        $output = shell_exec($this->settings['paths']['pandoc'] . ' ' . $tmp_path . ' --top-level-division=chapter -f markdown_phpextra -t ' . $command . ' -s -o ' . $targetPath);
+        $output = shell_exec($this->easydoctorsettings['paths']['pandoc'] . ' ' . $tmp_path . ' --top-level-division=chapter -f markdown_phpextra -t ' . $command . ' -s -o ' . $targetPath);
 
         unlink($tmp_path);
     }

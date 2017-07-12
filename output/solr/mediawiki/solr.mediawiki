@@ -1,0 +1,162 @@
+<ul>
+<li>[[#page1|Installation]]
+<ul>
+<li>[[#part1|Composer]]</li>
+<li>[[#part2|Einrichtung]]</li></ul>
+</li>
+<li>[[#page2|Konfiguration]]
+<ul>
+<li>[[#part3|Statisches Typoscript inkludieren]]</li>
+<li>[[#part4|Konstanten für die SOLR Connection einrichten]]</li>
+<li>[[#part5|Search Marker]]</li>
+<li>[[#part6|Indexierung aktivieren]]</li>
+<li>[[#part7|Root-Page definieren]]</li>
+<li>[[#part8|SOLR Connections intialisieren]]</li>
+<li>[[#part9|Verbindungen überprüfen]]</li></ul>
+</li>
+<li>[[#page3|Indexierung]]
+<ul>
+<li>[[#part10|Inhalte für Indexierung wählen]]</li>
+<li>[[#part11|Scheduler Tasks einrichten]]</li></ul>
+</li>
+<li>[[#page4|Anzeige der Suche und Ergebnisse]]
+<ul>
+<li>[[#part12|Seite anlegen]]</li>
+<li>[[#part13|Content Element einfügen]]</li>
+<li>[[#part14|Suchen]]</li></ul>
+</li>
+<li>[[#page5|Anpassung]]
+<ul>
+<li><p>[[#part15|Anpassung der Templates in Version 7]]</p>
+= Installation =
+</li></ul>
+</li></ul>
+
+== Composer ==
+
+Wechsele in das TYPO3 Verzeichnis und installiere die Extension SOLR mit folgendem Befehl:
+<pre><code>composer require typo3-ter<span style="color: #000000; font-weight: bold;">/</span>solr</code></pre>
+== Einrichtung ==
+
+* Wechsele in den Bereich &quot;Extensions&quot;
+** Gebe bei Suche &quot;solr&quot; ein
+** Aktiviere die Extension
+
+= Konfiguration =
+
+== Statisches Typoscript inkludieren ==
+
+* Wechsele in den Bereich &quot;Template&quot; und wähle den obersten Knoten der Webseite aus
+** Wähle &quot;Info/Modify&quot; im Dropdown aus
+** Wähle &quot;Edit the whole template record&quot;
+** Wähle im Menü &quot;Includes&quot;
+** Klicke rechts auf die Option &quot;Search - Base Configuration (solr)&quot; und füge sie hinzu
+** Klicke auf &quot;Save&quot; um die Einstellungen zu speichern
+
+[[File:images/static_typoscript.png|Bild 1]]
+
+== Konstanten für die SOLR Connection einrichten ==
+
+Aktualisiere die Konstanten auf Deiner Root-Page mit folgendem Typoscript:
+
+<pre><code><a href="http://documentation.typo3.org/documentation/tsref/tlo-objects/plugin/"><span style="color: #990000; font-weight: bold;">plugin</span></a> <span style="color: #009900;">&#123;</span>
+&nbsp; &nbsp; <span style="color: #000066; font-weight: bold;">tx_solr</span> <span style="color: #009900;">&#123;</span>
+&nbsp; &nbsp; &nbsp; &nbsp; solr <span style="color: #009900;">&#123;</span>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; host <span style="color: #339933; font-weight: bold;">=</span> localhost
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; port <span style="color: #339933; font-weight: bold;">=</span> <span style="color: #cc0000;">8983</span>
+&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#125;</span>
+&nbsp; &nbsp; <span style="color: #009900;">&#125;</span>
+<span style="color: #009900;">&#125;</span></code></pre>
+Denke daran, den Wert für host anzupassen, wenn SOLR auf einem externen Server läuft.
+
+== Search Marker ==
+
+EXR:solr indexiert alles zwischen
+
+<pre><code><span style="color: #808080; font-style: italic;">&lt;!-- TYPO3SEARCH_begin --&gt;</span> und <span style="color: #808080; font-style: italic;">&lt;!-- TYPO3SEARCH_end --&gt;</span></code></pre>
+Sollten diese Marker nicht vorhanden sein, müssen diese hinzugefügt werden. Vor allem um die Qualität zu erhöhen und nur die relevanten Inhalte zu indexieren. Der einfachste Weg ist, dies mit Typoscript zu tun:
+
+<pre><code><span style="color: #000066; font-weight: bold;">page</span><span style="color: #339933; font-weight: bold;">.</span>10 <span style="color: #009900;">&#123;</span>
+&nbsp; &nbsp; <a href="http://documentation.typo3.org/documentation/tsref/functions/stdWrap/"><span style="font-weight: bold;">stdWrap</span></a><span style="color: #339933; font-weight: bold;">.</span>dataWrap <span style="color: #339933; font-weight: bold;">=</span> <span style="color: #339933; font-weight: bold;">&lt;!</span>--TYPO3SEARCH_begin--<span style="color: #339933; font-weight: bold;">&gt;|&lt;!</span>--TYPO3SEARCH_end--<span style="color: #339933; font-weight: bold;">&gt;</span>
+<span style="color: #009900;">&#125;</span></code></pre>
+== Indexierung aktivieren ==
+
+Das Indexing wird mit folgendem Tyoscript aktiviert:
+
+<pre><code><span style="color: #000066; font-weight: bold;">config</span> <span style="color: #009900;">&#123;</span>
+&nbsp; &nbsp; index_enable <span style="color: #339933; font-weight: bold;">=</span> <span style="color: #cc0000;">1</span>
+<span style="color: #009900;">&#125;</span></code></pre>
+== Root-Page definieren ==
+
+Wichtig ist auch, dass die Root-Page als solche aktiviert ist.
+
+[[File:images/root_page.png|Bild 2]]
+
+* Aktviere die Checkbox bei '''Use as Root Page'''
+
+== SOLR Connections intialisieren ==
+
+Als nächstes müssen die SOLR Connections aktiviert werden. Zum Initialisieren wähle aus dem Menü &quot;Initialize Solr connections&quot;:
+
+[[File:images/solr_connection.png|Bild 3]]
+
+== Verbindungen überprüfen ==
+
+* Gehe zu &quot;Reports&quot;
+* Schaue Dir an ob bei &quot;solr&quot; Fehlermeldungen aufgetreten sind und ob die Verbindung geklappt hat
+
+= Indexierung =
+
+== Inhalte für Indexierung wählen ==
+
+Wenn alles eingerichtet ist, wechsele auf der linken Seite zum Menüpunkt &quot;Search&quot;. Klicke im Modul auf &quot;Index Queue&quot;, wähle die Inhalte aus und klicke auf &quot;Queue selected content for indexing&quot;.
+
+[[File:images/queue.png|Bild 4]]
+
+== Scheduler Tasks einrichten ==
+
+Damit die Indexierung tatsächlich durchgeführt wird, muss ein Scheduler Task eingerichtet werden, der auch manuell ausgeführt werden kann.
+
+* Wähle &quot;Scheduler&quot;
+* Füge einen neuen Task hinzu
+* Wähle aus der Oberkategorie solr den task &quot;Index Queue Worker&quot; aus
+* Klicke auf Speichern, damit wird der Task angelegt
+* Klicke in der Übersicht der Scheduler beim entsprechenden Task auf das play Symbol und &quot;Run task&quot;
+
+[[File:images/scheduler.png|Bild 5]]
+
+= Anzeige der Suche und Ergebnisse =
+
+== Seite anlegen ==
+
+Lege unterhalb des Page Roots eine Seite &quot;Suche&quot; an.
+
+[[File:images/searchpage.png|Bild 6]]
+
+== Content Element einfügen ==
+
+Füge das Plugin &quot;Search&quot; auf der Seite ein.
+
+[[File:images/add_plugin.png|Bild 7]]
+
+== Suchen ==
+
+Öffne die Seite &quot;Suche&quot; auf der Webseite und gebe &quot;*&quot; ein. Du solltest nun die ersten Inhalte sehen.
+
+[[File:images/searchresults.png|Bild 8]]
+
+= Anpassung =
+
+== Anpassung der Templates in Version 7 ==
+
+Der Pfad zu den Templates kann über folgendes Typoscript angepasst werden. Der entsprechende Vermerk dazu findet sich auch in '''Configuration/TypoScript/Solr/setup.txt'''
+
+<pre><code><a href="http://documentation.typo3.org/documentation/tsref/tlo-objects/plugin/"><span style="color: #990000; font-weight: bold;">plugin</span></a><span style="color: #339933; font-weight: bold;">.</span>tx_solr <span style="color: #009900;">&#123;</span>
+&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #aaa; font-style: italic;">// By convention the templates get loaded from EXT:solr/Resources/Private/Templates/Frontend/Search/(ActionName).html</span>
+&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #aaa; font-style: italic;">// If you want to define a different entry template, you can do this here to overwrite the convensional default template</span>
+&nbsp; &nbsp; &nbsp; &nbsp; templateFiles <span style="color: #009900;">&#123;</span>
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; frequentSearched <span style="color: #339933; font-weight: bold;">=</span> EXT<span style="color: #339933; font-weight: bold;">:</span>solr<span style="color: #339933; font-weight: bold;">/</span>Resources<span style="color: #339933; font-weight: bold;">/</span>Private<span style="color: #339933; font-weight: bold;">/</span>Templates<span style="color: #339933; font-weight: bold;">/</span>Search<span style="color: #339933; font-weight: bold;">/</span>FrequentlySearched<span style="color: #339933; font-weight: bold;">.</span>html
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; results <span style="color: #339933; font-weight: bold;">=</span> EXT<span style="color: #339933; font-weight: bold;">:</span>solr<span style="color: #339933; font-weight: bold;">/</span>Resources<span style="color: #339933; font-weight: bold;">/</span>Private<span style="color: #339933; font-weight: bold;">/</span>Templates<span style="color: #339933; font-weight: bold;">/</span>Search<span style="color: #339933; font-weight: bold;">/</span>Results<span style="color: #339933; font-weight: bold;">.</span>html
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; form <span style="color: #339933; font-weight: bold;">=</span> EXT<span style="color: #339933; font-weight: bold;">:</span>solr<span style="color: #339933; font-weight: bold;">/</span>Resources<span style="color: #339933; font-weight: bold;">/</span>Private<span style="color: #339933; font-weight: bold;">/</span>Templates<span style="color: #339933; font-weight: bold;">/</span>Search<span style="color: #339933; font-weight: bold;">/</span>Form<span style="color: #339933; font-weight: bold;">.</span>html
+&nbsp; &nbsp; &nbsp; &nbsp; <span style="color: #009900;">&#125;</span>
+<span style="color: #009900;">&#125;</span></code></pre>
