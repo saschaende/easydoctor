@@ -348,8 +348,8 @@ Example:
 
 # Imprint
 
-Sascha Ende & Kathrin Ende weebster GbR
-Skagenhof 9, 30457 Hannover, Germany
-Phone: +49-(0)511-12226806
-Email: info@sascha-ende.de
-USt-IdNr.: DE294748666
+* Sascha Ende / Kathrin Ende weebster GbR
+* Skagenhof 9, 30457 Hannover, Germany
+* Phone: +49-(0)511-12226806
+* Email: info@sascha-ende.de
+* USt-IdNr.: DE294748666
