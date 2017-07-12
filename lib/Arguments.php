@@ -12,7 +12,7 @@ class Arguments
         // p: (required parameter with value)
         // v (optional parameter without value)
         // h (optional parameter without value)
-        self::$args = getopt('p:vh');
+        self::$args = getopt('p:',['verbose','noshl']);
     }
 
     public static function get($key){

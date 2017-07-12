@@ -12,6 +12,7 @@ class Exporter
     public $parser;
     public $converter;
     public $settings;
+    public $easydoctorsettings;
 
 
     public function __construct(Importer $importer, Parser $parser, Converter $converter)
@@ -19,7 +20,14 @@ class Exporter
         $this->importer = $importer;
         $this->parser = $parser;
         $this->converter = $converter;
-        $this->settings = parse_ini_file('easydoctor.ini', true);
+
+        // load settings from project
+        $iniFilepath = 'doc/'.Arguments::get('p').'/project.ini';
+        if(!file_exists($iniFilepath)){
+            die('Unable to locate project configuration file: '.$iniFilepath);
+        }
+        $this->settings = parse_ini_file($iniFilepath, true);
+        $this->easydoctorsettings = parse_ini_file('easydoctor.ini', true);
     }
 
     public function execute()
@@ -217,7 +225,7 @@ class Exporter
      */
     public function printOutput($text)
     {
-        if (!Arguments::get('v')) {
+        if (!Arguments::get('verbose')) {
             echo '* ' . $text . "\n";
         }
     }

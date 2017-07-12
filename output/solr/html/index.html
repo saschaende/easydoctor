@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Dokumentation</title>
+    <title>The ultimative TYPO3 solr guide</title>
 
     <!-- Bootstrap -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -24,7 +24,7 @@
 
 <div class="jumbotron">
     <div class="container">
-        <h1>Dokumentation</h1>
+        <h1>The ultimative TYPO3 solr guide</h1>
     </div>
 </div><!--end of .jumbotron-->
 
@@ -97,25 +97,28 @@
 <p><img src="images/static_typoscript.png" alt="Bild 1" class="img-responsive"></p>
 <h2 id="part4">Konstanten für die SOLR Connection einrichten</h2>
 <p>Aktualisiere die Konstanten auf Deiner Root-Page mit folgendem Typoscript:</p>
-<pre><code><a href="http://documentation.typo3.org/documentation/tsref/tlo-objects/plugin/"><span style="color: #990000; font-weight: bold;">plugin</span></a> <span style="color: #009900;">{</span><br>
-    <span style="color: #000066; font-weight: bold;">tx_solr</span> <span style="color: #009900;">{</span><br>
-        solr <span style="color: #009900;">{</span><br>
-            host <span style="color: #339933; font-weight: bold;">=</span> localhost<br>
-            port <span style="color: #339933; font-weight: bold;">=</span> <span style="color: #cc0000;">8983</span><br>
-        <span style="color: #009900;">}</span><br>
-    <span style="color: #009900;">}</span><br><span style="color: #009900;">}</span></code></pre>
+<pre><code><a href="http://documentation.typo3.org/documentation/tsref/tlo-objects/plugin/"><span style="color: #990000; font-weight: bold;">plugin</span></a> <span style="color: #009900;">{</span>
+    <span style="color: #000066; font-weight: bold;">tx_solr</span> <span style="color: #009900;">{</span>
+        solr <span style="color: #009900;">{</span>
+            host <span style="color: #339933; font-weight: bold;">=</span> localhost
+            port <span style="color: #339933; font-weight: bold;">=</span> <span style="color: #cc0000;">8983</span>
+        <span style="color: #009900;">}</span>
+    <span style="color: #009900;">}</span>
+<span style="color: #009900;">}</span></code></pre>
 <p>Denke daran, den Wert für host anzupassen, wenn SOLR auf einem externen Server läuft.</p>
 <h2 id="part5">Search Marker</h2>
 <p>EXR:solr indexiert alles zwischen </p>
 <pre><code><span style="color: #808080; font-style: italic;">&lt;!-- TYPO3SEARCH_begin --&gt;</span> und <span style="color: #808080; font-style: italic;">&lt;!-- TYPO3SEARCH_end --&gt;</span></code></pre>
 <p>Sollten diese Marker nicht vorhanden sein, müssen diese hinzugefügt werden. Vor allem um die Qualität zu erhöhen und nur die relevanten Inhalte zu indexieren.
 Der einfachste Weg ist, dies mit Typoscript zu tun:</p>
-<pre><code><span style="color: #000066; font-weight: bold;">page</span><span style="color: #339933; font-weight: bold;">.</span>10 <span style="color: #009900;">{</span><br>
-    <a href="http://documentation.typo3.org/documentation/tsref/functions/stdWrap/"><span style="font-weight: bold;">stdWrap</span></a><span style="color: #339933; font-weight: bold;">.</span>dataWrap <span style="color: #339933; font-weight: bold;">=</span> <span style="color: #339933; font-weight: bold;">&lt;!</span>--TYPO3SEARCH_begin--<span style="color: #339933; font-weight: bold;">&gt;|&lt;!</span>--TYPO3SEARCH_end--<span style="color: #339933; font-weight: bold;">&gt;</span><br><span style="color: #009900;">}</span></code></pre>
+<pre><code><span style="color: #000066; font-weight: bold;">page</span><span style="color: #339933; font-weight: bold;">.</span>10 <span style="color: #009900;">{</span>
+    <a href="http://documentation.typo3.org/documentation/tsref/functions/stdWrap/"><span style="font-weight: bold;">stdWrap</span></a><span style="color: #339933; font-weight: bold;">.</span>dataWrap <span style="color: #339933; font-weight: bold;">=</span> <span style="color: #339933; font-weight: bold;">&lt;!</span>--TYPO3SEARCH_begin--<span style="color: #339933; font-weight: bold;">&gt;|&lt;!</span>--TYPO3SEARCH_end--<span style="color: #339933; font-weight: bold;">&gt;</span>
+<span style="color: #009900;">}</span></code></pre>
 <h2 id="part6">Indexierung aktivieren</h2>
 <p>Das Indexing wird mit folgendem Tyoscript aktiviert:</p>
-<pre><code><span style="color: #000066; font-weight: bold;">config</span> <span style="color: #009900;">{</span><br>
-    index_enable <span style="color: #339933; font-weight: bold;">=</span> <span style="color: #cc0000;">1</span><br><span style="color: #009900;">}</span></code></pre>
+<pre><code><span style="color: #000066; font-weight: bold;">config</span> <span style="color: #009900;">{</span>
+    index_enable <span style="color: #339933; font-weight: bold;">=</span> <span style="color: #cc0000;">1</span>
+<span style="color: #009900;">}</span></code></pre>
 <h2 id="part7">Root-Page definieren</h2>
 <p>Wichtig ist auch, dass die Root-Page als solche aktiviert ist.</p>
 <p><img src="images/root_page.png" alt="Bild 2" class="img-responsive"></p>
@@ -159,14 +162,15 @@ Der einfachste Weg ist, dies mit Typoscript zu tun:</p>
 <h2 id="part15">Anpassung der Templates in Version 7</h2>
 <p>Der Pfad zu den Templates kann über folgendes Typoscript angepasst werden. Der entsprechende Vermerk dazu findet sich auch
 in <strong>Configuration/TypoScript/Solr/setup.txt</strong></p>
-<pre><code><a href="http://documentation.typo3.org/documentation/tsref/tlo-objects/plugin/"><span style="color: #990000; font-weight: bold;">plugin</span></a><span style="color: #339933; font-weight: bold;">.</span>tx_solr <span style="color: #009900;">{</span><br>
-        <span style="color: #aaa; font-style: italic;">// By convention the templates get loaded from EXT:solr/Resources/Private/Templates/Frontend/Search/(ActionName).html</span><br>
-        <span style="color: #aaa; font-style: italic;">// If you want to define a different entry template, you can do this here to overwrite the convensional default template</span><br>
-        templateFiles <span style="color: #009900;">{</span><br>
-                frequentSearched <span style="color: #339933; font-weight: bold;">=</span> EXT<span style="color: #339933; font-weight: bold;">:</span>solr<span style="color: #339933; font-weight: bold;">/</span>Resources<span style="color: #339933; font-weight: bold;">/</span>Private<span style="color: #339933; font-weight: bold;">/</span>Templates<span style="color: #339933; font-weight: bold;">/</span>Search<span style="color: #339933; font-weight: bold;">/</span>FrequentlySearched<span style="color: #339933; font-weight: bold;">.</span>html<br>
-                results <span style="color: #339933; font-weight: bold;">=</span> EXT<span style="color: #339933; font-weight: bold;">:</span>solr<span style="color: #339933; font-weight: bold;">/</span>Resources<span style="color: #339933; font-weight: bold;">/</span>Private<span style="color: #339933; font-weight: bold;">/</span>Templates<span style="color: #339933; font-weight: bold;">/</span>Search<span style="color: #339933; font-weight: bold;">/</span>Results<span style="color: #339933; font-weight: bold;">.</span>html<br>
-                form <span style="color: #339933; font-weight: bold;">=</span> EXT<span style="color: #339933; font-weight: bold;">:</span>solr<span style="color: #339933; font-weight: bold;">/</span>Resources<span style="color: #339933; font-weight: bold;">/</span>Private<span style="color: #339933; font-weight: bold;">/</span>Templates<span style="color: #339933; font-weight: bold;">/</span>Search<span style="color: #339933; font-weight: bold;">/</span>Form<span style="color: #339933; font-weight: bold;">.</span>html<br>
-        <span style="color: #009900;">}</span><br><span style="color: #009900;">}</span></code></pre>
+<pre><code><a href="http://documentation.typo3.org/documentation/tsref/tlo-objects/plugin/"><span style="color: #990000; font-weight: bold;">plugin</span></a><span style="color: #339933; font-weight: bold;">.</span>tx_solr <span style="color: #009900;">{</span>
+        <span style="color: #aaa; font-style: italic;">// By convention the templates get loaded from EXT:solr/Resources/Private/Templates/Frontend/Search/(ActionName).html</span>
+        <span style="color: #aaa; font-style: italic;">// If you want to define a different entry template, you can do this here to overwrite the convensional default template</span>
+        templateFiles <span style="color: #009900;">{</span>
+                frequentSearched <span style="color: #339933; font-weight: bold;">=</span> EXT<span style="color: #339933; font-weight: bold;">:</span>solr<span style="color: #339933; font-weight: bold;">/</span>Resources<span style="color: #339933; font-weight: bold;">/</span>Private<span style="color: #339933; font-weight: bold;">/</span>Templates<span style="color: #339933; font-weight: bold;">/</span>Search<span style="color: #339933; font-weight: bold;">/</span>FrequentlySearched<span style="color: #339933; font-weight: bold;">.</span>html
+                results <span style="color: #339933; font-weight: bold;">=</span> EXT<span style="color: #339933; font-weight: bold;">:</span>solr<span style="color: #339933; font-weight: bold;">/</span>Resources<span style="color: #339933; font-weight: bold;">/</span>Private<span style="color: #339933; font-weight: bold;">/</span>Templates<span style="color: #339933; font-weight: bold;">/</span>Search<span style="color: #339933; font-weight: bold;">/</span>Results<span style="color: #339933; font-weight: bold;">.</span>html
+                form <span style="color: #339933; font-weight: bold;">=</span> EXT<span style="color: #339933; font-weight: bold;">:</span>solr<span style="color: #339933; font-weight: bold;">/</span>Resources<span style="color: #339933; font-weight: bold;">/</span>Private<span style="color: #339933; font-weight: bold;">/</span>Templates<span style="color: #339933; font-weight: bold;">/</span>Search<span style="color: #339933; font-weight: bold;">/</span>Form<span style="color: #339933; font-weight: bold;">.</span>html
+        <span style="color: #009900;">}</span>
+<span style="color: #009900;">}</span></code></pre>
 </article>
         </div>
 

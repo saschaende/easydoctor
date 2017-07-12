@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Dokumentation</title>
+    <title><?php echo $this->settings['project']['title']; ?></title>
 
     <!-- Bootstrap -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -24,7 +24,7 @@
 
 <div class="jumbotron">
     <div class="container">
-        <h1>Dokumentation</h1>
+        <h1><?php echo $this->settings['project']['title']; ?></h1>
     </div>
 </div><!--end of .jumbotron-->
 

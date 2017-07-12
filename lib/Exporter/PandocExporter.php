@@ -16,7 +16,7 @@ class PandocExporter extends Exporter
     public function execute()
     {
         // Pandoc?
-        if (!empty($this->settings['paths']['pandoc'])) {
+        if (!empty($this->easydoctorsettings['paths']['pandoc'])) {
             foreach ($this->pandocFormats as $format) {
                 if ($this->settings['enable'][$format[1]]) {
                     $this->printOutput($format[1] . ' export: enabled, start export');

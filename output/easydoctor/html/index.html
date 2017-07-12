@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Dokumentation</title>
+    <title>Easydoctor.org - Create documentation pdf, websites and more just with markdown</title>
 
     <!-- Bootstrap -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -24,7 +24,7 @@
 
 <div class="jumbotron">
     <div class="container">
-        <h1>Dokumentation</h1>
+        <h1>Easydoctor.org - Create documentation pdf, websites and more just with markdown</h1>
     </div>
 </div><!--end of .jumbotron-->
 
@@ -55,10 +55,10 @@
 <h1 id="page1">Easydoctor</h1>
 <p>Fast and easy documentation generator for markdown files: Generate PDF, Latex, RST, HTML Website and many more formats.</p>
 <ul>
-<li><a href="http://easydoctor.sascha-ende.de">Website</a></li>
-<li><a href="https://github.com/saschaende/easydoctor/raw/master/output/test/test.pdf">Example 1 - Syntax tests</a></li>
-<li><a href="https://github.com/saschaende/easydoctor/raw/master/output/easydoctor/easydoctor.pdf">Example 2 - The easydoc readme</a></li>
-<li><a href="https://github.com/saschaende/easydoctor/raw/master/output/solr/solr.pdf">Example 3 - TYPO3 solr</a></li>
+<li><a href="http://www.easydoctor.org">Easydoctor Website</a></li>
+<li><a href="https://github.com/saschaende/easydoctor/raw/master/output/test/test.pdf">PDF Example 1 - Syntax tests</a></li>
+<li><a href="https://github.com/saschaende/easydoctor/raw/master/output/easydoctor/easydoctor.pdf">PDF Example 2 - The easydoc readme</a></li>
+<li><a href="https://github.com/saschaende/easydoctor/raw/master/output/solr/solr.pdf">PDF Example 3 - TYPO3 solr</a></li>
 </ul>
 <h2 id="part1">Features</h2>
 <ul>
@@ -82,14 +82,14 @@
 </ul>
 <h2 id="part2">Installation</h2>
 <p>Download <a href="https://github.com/saschaende/easydoctor/releases/latest">latest release</a> and unzip it to a directory <strong>or</strong> clone from git:</p>
-<pre><code>git clone git@github.com:saschaende/easydoctor.git</code></pre>
+<pre><code><span style="color: #c20cb9; font-weight: bold;">git clone</span> <span style="color: #c20cb9; font-weight: bold;">git</span><span style="color: #000000; font-weight: bold;">@</span>github.com:saschaende<span style="color: #000000; font-weight: bold;">/</span>easydoctor.git</code></pre>
 <p>Or create a new project with composer:</p>
-<pre><code>composer create-project saschaende/easydoctor</code></pre>
+<pre><code>composer create-project saschaende<span style="color: #000000; font-weight: bold;">/</span>easydoctor</code></pre>
 <p>Install <a href="http://pandoc.org/">Pandoc</a> to use the extend features like rst, tex, mediawiki, rtf or rdt export.</p>
 <h2 id="part3">Example</h2>
 <p>Just execute this in your shell terminal (modify the php interpreter path):</p>
-<pre><code>G:\xampp\php\php.exe easydoctor.php -p=test</code></pre>
-<p>This will make a pdf from the test project in your doc directory. You will find the pdf in <code>output/pdf</code></p>
+<pre><code>G:\xampp\php\php.exe easydoctor.php <span style="color: #660033;">-p</span>=<span style="color: #7a0874; font-weight: bold;">test</span></code></pre>
+<p>This will make a pdf from the test project in your doc directory. You will find the output in <code>output/your_project</code></p>
 <h2 id="part4">Arguments</h2>
 <table>
 <thead><tr>
@@ -98,17 +98,17 @@
 </tr></thead>
 <tbody>
 <tr>
-<td>php easydoctor.php <strong>-p</strong>=<em>project</em>
+<td>php easydoctor.php <code>-p</code>=<em>project</em>
 </td>
 <td>project directory in "doc"</td>
 </tr>
 <tr>
-<td>php easydoctor.php <strong>--v</strong>
+<td>php easydoctor.php <code>--verbose</code>
 </td>
 <td>enable verbose, no output</td>
 </tr>
 <tr>
-<td>php easydoctor.php <strong>--h</strong>
+<td>php easydoctor.php <code>--noshl</code>
 </td>
 <td>disable syntax highlight</td>
 </tr>
@@ -121,6 +121,8 @@
 <li>project
 <ul>
 <li>Images for your documentation project: images/*</li>
+<li>project.ini <code>project configuration file</code>
+</li>
 <li>doc1.md</li>
 <li>doc2.md</li>
 <li>...</li>
@@ -133,13 +135,13 @@
 <ul>
 <li>h1 and h2 will be used for the TOC (table of contents)</li>
 <li>Define the ordering by naming the files for example with numbers</li>
-<li>You can configure easydoc with <code>easydoctor.ini</code>
+<li>You can configure the pandoc path in <code>easydoctor.ini</code>
 </li>
 </ul>
 <h1 id="page2">Syntax highlighting</h1>
 <h2 id="part7">How to use</h2>
 <p>Example:</p>
-<pre><code>&lt;pre&gt;&lt;code&gt;YOUR PHP CODE&lt;/code&gt;&lt;/pre&gt;</code></pre>
+<pre><code>&lt;div lang="language"&gt;YOUR CODE&lt;/div&gt;</code></pre>
 <h2 id="part8">Supported languages:</h2>
 <ul>
 <li>4cs </li>

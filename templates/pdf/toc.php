@@ -1,5 +1,5 @@
 <div class="toc">
-    <h1>Inhaltsverzeichnis</h1>
+    <h1><?php echo $this->settings['project']['title']; ?></h1>
 
     <table style="width:100%;">
         <?php $h1count=1; $h2count=1; foreach ($toc as $line): ?>

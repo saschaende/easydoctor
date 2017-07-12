@@ -2,10 +2,10 @@
 
 Fast and easy documentation generator for markdown files: Generate PDF, Latex, RST, HTML Website and many more formats.
 
-* [Website](http://easydoctor.sascha-ende.de)
-* [Example 1 - Syntax tests](https://github.com/saschaende/easydoctor/raw/master/output/test/test.pdf)
-* [Example 2 - The easydoc readme](https://github.com/saschaende/easydoctor/raw/master/output/easydoctor/easydoctor.pdf)
-* [Example 3 - TYPO3 solr](https://github.com/saschaende/easydoctor/raw/master/output/solr/solr.pdf)
+* [Easydoctor Website](http://www.easydoctor.org)
+* [PDF Example 1 - Syntax tests](https://github.com/saschaende/easydoctor/raw/master/output/test/test.pdf)
+* [PDF Example 2 - The easydoc readme](https://github.com/saschaende/easydoctor/raw/master/output/easydoctor/easydoctor.pdf)
+* [PDF Example 3 - TYPO3 solr](https://github.com/saschaende/easydoctor/raw/master/output/solr/solr.pdf)
 
 ## Features
 
@@ -28,11 +28,11 @@ Fast and easy documentation generator for markdown files: Generate PDF, Latex, R
 
 Download [latest release](https://github.com/saschaende/easydoctor/releases/latest) and unzip it to a directory **or** clone from git:
 
-    git clone git@github.com:saschaende/easydoctor.git
+<div lang="bash">git clone git@github.com:saschaende/easydoctor.git</div>
     
 Or create a new project with composer:
 
-    composer create-project saschaende/easydoctor
+<div lang="bash">composer create-project saschaende/easydoctor</div>
     
 Install [Pandoc](http://pandoc.org/) to use the extend features like rst, tex, mediawiki, rtf or rdt export.
 
@@ -40,23 +40,24 @@ Install [Pandoc](http://pandoc.org/) to use the extend features like rst, tex, m
 
 Just execute this in your shell terminal (modify the php interpreter path):
 
-    G:\xampp\php\php.exe easydoctor.php -p=test
+<div lang="bash">G:\xampp\php\php.exe easydoctor.php -p=test</div>
 
-This will make a pdf from the test project in your doc directory. You will find the pdf in `output/pdf`
+This will make a pdf from the test project in your doc directory. You will find the output in ``output/your_project``
 
 ## Arguments
 
 Command                                 | Description
 -------------                           | -------------
-php easydoctor.php **-p**=*project*     | project directory in "doc"
-php easydoctor.php **--v**               | enable verbose, no output
-php easydoctor.php **--h**               | disable syntax highlight
+php easydoctor.php ``-p``=*project*     | project directory in "doc"
+php easydoctor.php ``--verbose``        | enable verbose, no output
+php easydoctor.php ``--noshl``          | disable syntax highlight
 
 ## doc directory: Projects strucure
 
 * doc
     * project
         * Images for your documentation project: images/*
+        * project.ini ``project configuration file``
         * doc1.md
         * doc2.md
         * ...
@@ -65,7 +66,7 @@ php easydoctor.php **--h**               | disable syntax highlight
 
 * h1 and h2 will be used for the TOC (table of contents)
 * Define the ordering by naming the files for example with numbers
-* You can configure easydoc with ``easydoctor.ini``
+* You can configure the pandoc path in ``easydoctor.ini``
 
 # Syntax highlighting
 
@@ -73,8 +74,8 @@ php easydoctor.php **--h**               | disable syntax highlight
 
 Example:
 
-    <div lang="php">YOUR PHP CODE</div>
-    
+    <div lang="language">YOUR CODE</div>
+
 ## Supported languages:
     
 * 4cs 
