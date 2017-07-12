@@ -19,7 +19,7 @@ Fast and easy documentation generator for markdown files: Generate PDF, Latex, R
 * Syntax highlighting for 287 programming languages
 * Export to:
     * PDF
-    * Plain HTML ([Pandoc](http://pandoc.org/) required)
+    * HTML Website (one page)
     * Latex ([Pandoc](http://pandoc.org/) required)
     * Restructured text ([Pandoc](http://pandoc.org/) required)
     * RTF ([Pandoc](http://pandoc.org/) required)
