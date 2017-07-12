@@ -6,6 +6,7 @@ Fast and easy documentation generator for markdown files: Generate PDF, Latex, R
 * [PDF Example 1 - Syntax tests](https://github.com/saschaende/easydoctor/raw/master/output/test/test.pdf)
 * [PDF Example 2 - The easydoc readme](https://github.com/saschaende/easydoctor/raw/master/output/easydoctor/easydoctor.pdf)
 * [PDF Example 3 - TYPO3 solr](https://github.com/saschaende/easydoctor/raw/master/output/solr/solr.pdf)
+* [HTML Website Example 3 - TYPO3 solr](http://www.easydoctor.org/examples/solr/)
 
 ## Features
 
@@ -24,7 +25,7 @@ Fast and easy documentation generator for markdown files: Generate PDF, Latex, R
     * RTF ([Pandoc](http://pandoc.org/) required)
     * ODT ([Pandoc](http://pandoc.org/) required)
 
-## Installation
+## Download/Installation
 
 Download [latest release](https://github.com/saschaende/easydoctor/releases/latest) and unzip it to a directory **or** clone from git:
 

@@ -1,9 +1,9 @@
 {
     "name": "saschaende/easydoctor",
     "description": "Fast and easy documentation generator for markdown files",
-    "keywords": ["markdown", "documentation","generator"],
-    "homepage": "http://easydoctor.sascha-ende.de",
-    "type": "library",
+    "keywords": ["markdown", "documentation","generator","pdf","html","rst","latex","pandoc","automatically","website"],
+    "homepage": "http://www.easydoctor.org",
+    "type": "project",
     "license": "MIT",
     "autoload": {
         "psr-4": {
@@ -14,7 +14,7 @@
         {
             "name": "Sascha Ende",
             "email": "info@sascha-ende.de",
-            "homepage": "http://easydoctor.sascha-ende.de"
+            "homepage": "http://www.sascha-ende.de"
         }
     ],
     "require": {
