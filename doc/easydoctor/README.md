@@ -2,10 +2,10 @@
 
 Fast and easy documentation generator for markdown files: Generate PDF, Latex, RST, HTML Website and many more formats.
 
-[Website](http://easydoctor.sascha-ende.de)
-| [Example 1 - Syntax tests](https://github.com/saschaende/easydoctor/raw/master/output/test/test.pdf)
-| [Example 2 - The easydoc readme](https://github.com/saschaende/easydoctor/raw/master/output/easydoctor/easydoctor.pdf)
-| [Example 3 - TYPO3 solr](https://github.com/saschaende/easydoctor/raw/master/output/solr/solr.pdf)
+* [Website](http://easydoctor.sascha-ende.de)
+* [Example 1 - Syntax tests](https://github.com/saschaende/easydoctor/raw/master/output/test/test.pdf)
+* [Example 2 - The easydoc readme](https://github.com/saschaende/easydoctor/raw/master/output/easydoctor/easydoctor.pdf)
+* [Example 3 - TYPO3 solr](https://github.com/saschaende/easydoctor/raw/master/output/solr/solr.pdf)
 
 ## Features
 
@@ -18,16 +18,11 @@ Fast and easy documentation generator for markdown files: Generate PDF, Latex, R
 * Syntax highlighting for 287 programming languages
 * Export to:
     * PDF
-    * Plain HTML ([Pandoc][1] required)
-    * Latex ([Pandoc][1] required)
-    * Restructured text ([Pandoc][1] required)
-    * RTF ([Pandoc][1] required)
-    * ODT ([Pandoc][1] required)
-
-## Planned
-
-* Generate website from markdown
-* Syntax highlight support for more languages
+    * Plain HTML ([Pandoc](http://pandoc.org/) required)
+    * Latex ([Pandoc](http://pandoc.org/) required)
+    * Restructured text ([Pandoc](http://pandoc.org/) required)
+    * RTF ([Pandoc](http://pandoc.org/) required)
+    * ODT ([Pandoc](http://pandoc.org/) required)
 
 ## Installation
 
@@ -38,6 +33,8 @@ Download [latest release](https://github.com/saschaende/easydoctor/releases/late
 Or create a new project with composer:
 
     composer create-project saschaende/easydoctor
+    
+Install [Pandoc](http://pandoc.org/) to use the extend features like rst, tex, mediawiki, rtf or rdt export.
 
 ## Example
 
@@ -59,7 +56,6 @@ php easydoctor.php **--h**               | disable syntax highlight
 
 * doc
     * project
-        * CSS for documentation: css/style.css
         * Images for your documentation project: images/*
         * doc1.md
         * doc2.md
@@ -67,8 +63,7 @@ php easydoctor.php **--h**               | disable syntax highlight
     
 ## Important to know
 
-* Every documentation page only has one h1, this will be used for table of contents
-* h2 will be used as subpages in the table of contents
+* h1 and h2 will be used for the TOC (table of contents)
 * Define the ordering by naming the files for example with numbers
 * You can configure easydoc with ``easydoctor.ini``
 
@@ -339,6 +334,3 @@ Example:
 * yaml 
 * z80 
 * zxbasic 
-    
-    
-[1]: http://pandoc.org/  "Pandoc"

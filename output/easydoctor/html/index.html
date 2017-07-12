@@ -36,17 +36,16 @@
 <li><a href="#page1">Easydoctor</a>
 <ul>
 <li><a href="#part1">Features</a></li>
-<li><a href="#part2">Planned</a></li>
-<li><a href="#part3">Installation</a></li>
-<li><a href="#part4">Example</a></li>
-<li><a href="#part5">Arguments</a></li>
-<li><a href="#part6">doc directory: Projects strucure</a></li>
-<li><a href="#part7">Important to know</a></li>
+<li><a href="#part2">Installation</a></li>
+<li><a href="#part3">Example</a></li>
+<li><a href="#part4">Arguments</a></li>
+<li><a href="#part5">doc directory: Projects strucure</a></li>
+<li><a href="#part6">Important to know</a></li>
 </ul></li>
 <li><a href="#page2">Syntax highlighting</a>
 <ul>
-<li><a href="#part8">How to use</a></li>
-<li><a href="#part9">Supported languages:</a></li>
+<li><a href="#part7">How to use</a></li>
+<li><a href="#part8">Supported languages:</a></li>
 </ul></li>
 </ul></div>
         </div>
@@ -55,10 +54,12 @@
             <article class="markdown-body">
 <h1 id="page1">Easydoctor</h1>
 <p>Fast and easy documentation generator for markdown files: Generate PDF, Latex, RST, HTML Website and many more formats.</p>
-<p><a href="http://easydoctor.sascha-ende.de">Website</a>
-| <a href="https://github.com/saschaende/easydoctor/raw/master/output/pdf/test.pdf">Example 1 - Syntax tests</a>
-| <a href="https://github.com/saschaende/easydoctor/raw/master/output/pdf/easydoctor.pdf">Example 2 - The easydoc readme</a>
-| <a href="https://github.com/saschaende/easydoctor/raw/master/output/solr/solr.pdf">Example 3 - TYPO3 solr</a></p>
+<ul>
+<li><a href="http://easydoctor.sascha-ende.de">Website</a></li>
+<li><a href="https://github.com/saschaende/easydoctor/raw/master/output/test/test.pdf">Example 1 - Syntax tests</a></li>
+<li><a href="https://github.com/saschaende/easydoctor/raw/master/output/easydoctor/easydoctor.pdf">Example 2 - The easydoc readme</a></li>
+<li><a href="https://github.com/saschaende/easydoctor/raw/master/output/solr/solr.pdf">Example 3 - TYPO3 solr</a></li>
+</ul>
 <h2 id="part1">Features</h2>
 <ul>
 <li>Use markdown to write your documentation</li>
@@ -71,29 +72,25 @@
 <li>Export to:
 <ul>
 <li>PDF</li>
-<li>Plain HTML (<a href="http://pandoc.org/" title="Pandoc">Pandoc</a> required)</li>
-<li>Latex (<a href="http://pandoc.org/" title="Pandoc">Pandoc</a> required)</li>
-<li>Restructured text (<a href="http://pandoc.org/" title="Pandoc">Pandoc</a> required)</li>
-<li>RTF (<a href="http://pandoc.org/" title="Pandoc">Pandoc</a> required)</li>
-<li>ODT (<a href="http://pandoc.org/" title="Pandoc">Pandoc</a> required)</li>
+<li>Plain HTML (<a href="http://pandoc.org/">Pandoc</a> required)</li>
+<li>Latex (<a href="http://pandoc.org/">Pandoc</a> required)</li>
+<li>Restructured text (<a href="http://pandoc.org/">Pandoc</a> required)</li>
+<li>RTF (<a href="http://pandoc.org/">Pandoc</a> required)</li>
+<li>ODT (<a href="http://pandoc.org/">Pandoc</a> required)</li>
 </ul>
 </li>
 </ul>
-<h2 id="part2">Planned</h2>
-<ul>
-<li>Generate website from markdown</li>
-<li>Syntax highlight support for more languages</li>
-</ul>
-<h2 id="part3">Installation</h2>
+<h2 id="part2">Installation</h2>
 <p>Download <a href="https://github.com/saschaende/easydoctor/releases/latest">latest release</a> and unzip it to a directory <strong>or</strong> clone from git:</p>
 <pre><code>git clone git@github.com:saschaende/easydoctor.git</code></pre>
 <p>Or create a new project with composer:</p>
 <pre><code>composer create-project saschaende/easydoctor</code></pre>
-<h2 id="part4">Example</h2>
+<p>Install <a href="http://pandoc.org/">Pandoc</a> to use the extend features like rst, tex, mediawiki, rtf or rdt export.</p>
+<h2 id="part3">Example</h2>
 <p>Just execute this in your shell terminal (modify the php interpreter path):</p>
 <pre><code>G:\xampp\php\php.exe easydoctor.php -p=test</code></pre>
 <p>This will make a pdf from the test project in your doc directory. You will find the pdf in <code>output/pdf</code></p>
-<h2 id="part5">Arguments</h2>
+<h2 id="part4">Arguments</h2>
 <table>
 <thead><tr>
 <th>Command</th>
@@ -106,24 +103,23 @@
 <td>project directory in "doc"</td>
 </tr>
 <tr>
-<td>php easydoctor.php <strong>-v</strong>
+<td>php easydoctor.php <strong>--v</strong>
 </td>
 <td>enable verbose, no output</td>
 </tr>
 <tr>
-<td>php easydoctor.php <strong>-h</strong>
+<td>php easydoctor.php <strong>--h</strong>
 </td>
 <td>disable syntax highlight</td>
 </tr>
 </tbody>
 </table>
-<h2 id="part6">doc directory: Projects strucure</h2>
+<h2 id="part5">doc directory: Projects strucure</h2>
 <ul>
 <li>doc
 <ul>
 <li>project
 <ul>
-<li>CSS for documentation: css/style.css</li>
 <li>Images for your documentation project: images/*</li>
 <li>doc1.md</li>
 <li>doc2.md</li>
@@ -133,19 +129,18 @@
 </ul>
 </li>
 </ul>
-<h2 id="part7">Important to know</h2>
+<h2 id="part6">Important to know</h2>
 <ul>
-<li>Every documentation page only has one h1, this will be used for table of contents</li>
-<li>h2 will be used as subpages in the table of contents</li>
+<li>h1 and h2 will be used for the TOC (table of contents)</li>
 <li>Define the ordering by naming the files for example with numbers</li>
 <li>You can configure easydoc with <code>easydoctor.ini</code>
 </li>
 </ul>
 <h1 id="page2">Syntax highlighting</h1>
-<h2 id="part8">How to use</h2>
+<h2 id="part7">How to use</h2>
 <p>Example:</p>
 <pre><code>&lt;pre&gt;&lt;code&gt;YOUR PHP CODE&lt;/code&gt;&lt;/pre&gt;</code></pre>
-<h2 id="part9">Supported languages:</h2>
+<h2 id="part8">Supported languages:</h2>
 <ul>
 <li>4cs </li>
 <li>6502acme </li>
