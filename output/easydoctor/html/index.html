@@ -35,17 +35,19 @@
             <div id="toc"><ul>
 <li><a href="#page1">Easydoctor</a>
 <ul>
-<li><a href="#part1">Features</a></li>
-<li><a href="#part2">Download/Installation</a></li>
-<li><a href="#part3">Example</a></li>
-<li><a href="#part4">Arguments</a></li>
-<li><a href="#part5">doc directory: Projects strucure</a></li>
-<li><a href="#part6">Important to know</a></li>
+<li><a href="#part1">PDF examples</a></li>
+<li><a href="#part2">HTML examples</a></li>
+<li><a href="#part3">Features</a></li>
+<li><a href="#part4">Download/Installation</a></li>
+<li><a href="#part5">Example</a></li>
+<li><a href="#part6">Arguments</a></li>
+<li><a href="#part7">doc directory: Projects strucure</a></li>
+<li><a href="#part8">Important to know</a></li>
 </ul></li>
 <li><a href="#page2">Syntax highlighting</a>
 <ul>
-<li><a href="#part7">How to use</a></li>
-<li><a href="#part8">Supported languages:</a></li>
+<li><a href="#part9">How to use</a></li>
+<li><a href="#part10">Supported languages:</a></li>
 </ul></li>
 </ul></div>
         </div>
@@ -55,13 +57,22 @@
 <h1 id="page1">Easydoctor</h1>
 <p>Fast and easy documentation generator for markdown files: Generate PDF, Latex, RST, HTML Website and many more formats.</p>
 <ul>
-<li><a href="http://www.easydoctor.org">Easydoctor Website</a></li>
+<li><a href="http://www.easydoctor.org">Easydoctor official website</a></li>
+<li><a href="https://github.com/saschaende/easydoctor">Easydoctor on GITHUB</a></li>
+<li><a href="https://packagist.org/packages/saschaende/easydoctor">Easydoctor on PACKAGIST</a></li>
+</ul>
+<h2 id="part1">PDF examples</h2>
+<ul>
 <li><a href="https://github.com/saschaende/easydoctor/raw/master/output/test/test.pdf">PDF Example 1 - Syntax tests</a></li>
 <li><a href="https://github.com/saschaende/easydoctor/raw/master/output/easydoctor/easydoctor.pdf">PDF Example 2 - The easydoc readme</a></li>
 <li><a href="https://github.com/saschaende/easydoctor/raw/master/output/solr/solr.pdf">PDF Example 3 - TYPO3 solr</a></li>
+</ul>
+<h2 id="part2">HTML examples</h2>
+<ul>
+<li>This website :)</li>
 <li><a href="http://www.easydoctor.org/examples/solr/">HTML Website Example 3 - TYPO3 solr</a></li>
 </ul>
-<h2 id="part1">Features</h2>
+<h2 id="part3">Features</h2>
 <ul>
 <li>Use markdown to write your documentation</li>
 <li>Every chapter one file</li>
@@ -81,17 +92,17 @@
 </ul>
 </li>
 </ul>
-<h2 id="part2">Download/Installation</h2>
+<h2 id="part4">Download/Installation</h2>
 <p>Download <a href="https://github.com/saschaende/easydoctor/releases/latest">latest release</a> and unzip it to a directory <strong>or</strong> clone from git:</p>
 <pre><code><span style="color: #c20cb9; font-weight: bold;">git clone</span> <span style="color: #c20cb9; font-weight: bold;">git</span><span style="color: #000000; font-weight: bold;">@</span>github.com:saschaende<span style="color: #000000; font-weight: bold;">/</span>easydoctor.git</code></pre>
 <p>Or create a new project with composer:</p>
 <pre><code>composer create-project saschaende<span style="color: #000000; font-weight: bold;">/</span>easydoctor</code></pre>
 <p>Install <a href="http://pandoc.org/">Pandoc</a> to use the extend features like rst, tex, mediawiki, rtf or rdt export.</p>
-<h2 id="part3">Example</h2>
+<h2 id="part5">Example</h2>
 <p>Just execute this in your shell terminal (modify the php interpreter path):</p>
 <pre><code>G:\xampp\php\php.exe easydoctor.php <span style="color: #660033;">-p</span>=<span style="color: #7a0874; font-weight: bold;">test</span></code></pre>
 <p>This will make a pdf from the test project in your doc directory. You will find the output in <code>output/your_project</code></p>
-<h2 id="part4">Arguments</h2>
+<h2 id="part6">Arguments</h2>
 <table>
 <thead><tr>
 <th>Command</th>
@@ -115,7 +126,7 @@
 </tr>
 </tbody>
 </table>
-<h2 id="part5">doc directory: Projects strucure</h2>
+<h2 id="part7">doc directory: Projects strucure</h2>
 <ul>
 <li>doc
 <ul>
@@ -132,7 +143,7 @@
 </ul>
 </li>
 </ul>
-<h2 id="part6">Important to know</h2>
+<h2 id="part8">Important to know</h2>
 <ul>
 <li>h1 and h2 will be used for the TOC (table of contents)</li>
 <li>Define the ordering by naming the files for example with numbers</li>
@@ -140,10 +151,10 @@
 </li>
 </ul>
 <h1 id="page2">Syntax highlighting</h1>
-<h2 id="part7">How to use</h2>
+<h2 id="part9">How to use</h2>
 <p>Example:</p>
 <pre><code>&lt;div lang="language"&gt;YOUR CODE&lt;/div&gt;</code></pre>
-<h2 id="part8">Supported languages:</h2>
+<h2 id="part10">Supported languages:</h2>
 <ul>
 <li>4cs </li>
 <li>6502acme </li>

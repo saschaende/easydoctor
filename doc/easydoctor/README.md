@@ -2,10 +2,19 @@
 
 Fast and easy documentation generator for markdown files: Generate PDF, Latex, RST, HTML Website and many more formats.
 
-* [Easydoctor Website](http://www.easydoctor.org)
+* [Easydoctor official website](http://www.easydoctor.org)
+* [Easydoctor on GITHUB](https://github.com/saschaende/easydoctor)
+* [Easydoctor on PACKAGIST](https://packagist.org/packages/saschaende/easydoctor)
+
+## PDF examples
+
 * [PDF Example 1 - Syntax tests](https://github.com/saschaende/easydoctor/raw/master/output/test/test.pdf)
 * [PDF Example 2 - The easydoc readme](https://github.com/saschaende/easydoctor/raw/master/output/easydoctor/easydoctor.pdf)
 * [PDF Example 3 - TYPO3 solr](https://github.com/saschaende/easydoctor/raw/master/output/solr/solr.pdf)
+
+## HTML examples
+
+* This website :)
 * [HTML Website Example 3 - TYPO3 solr](http://www.easydoctor.org/examples/solr/)
 
 ## Features
@@ -336,3 +345,11 @@ Example:
 * yaml 
 * z80 
 * zxbasic 
+
+# Imprint
+
+Sascha Ende & Kathrin Ende weebster GbR
+Skagenhof 9, 30457 Hannover, Germany
+Phone: +49-(0)511-12226806
+Email: info@sascha-ende.de
+USt-IdNr.: DE294748666
