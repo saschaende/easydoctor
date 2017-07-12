@@ -60,12 +60,18 @@ class PdfExporter extends Exporter
 
         // Add Lines to pdf
         $tocNum = 0;
+        $h1count = 1;
+        $h2count = 1;
         foreach($convertedLines as $page){
 
             // new page, if it is h1
             $header = $this->parser->checkForHeader($page[0]);
             if($header[1] == 'h1'){
                 $mpdf->AddPage();
+                $id = 'page'.$h1count;
+            }
+            if($header[1] == 'h2'){
+                $id = 'part'.$h2count;
             }
 
             // get the actual page
@@ -85,7 +91,14 @@ class PdfExporter extends Exporter
             $this->setAbsoluteImagePaths($html);
 
             // add the html to the pdf
-            $mpdf->WriteHTML('<article class="markdown-body">'.$html.'</article>');
+            $mpdf->WriteHTML('<article class="markdown-body"><a name="'.$id.'"></a>'.$html.'</article>');
+
+            if($header[1] == 'h1'){
+                $h1count++;
+            }
+            if($header[1] == 'h2'){
+                $h2count++;
+            }
         }
 
         // set contents
