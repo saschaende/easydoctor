@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Easydoctor.org - Create documentation pdf, websites and more just with markdown</title>
+
+    <!-- Bootstrap -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="vendor/bootstrap/css/bootstrap-theme.min.css" rel="stylesheet">
+    <link href="vendor/theme/theme.css" rel="stylesheet">
+    <link href="vendor/theme/markdown.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+
+<div class="jumbotron">
+    <div class="container">
+        <h1>Easydoctor.org - Create documentation pdf, websites and more just with markdown</h1>
+    </div>
+</div><!--end of .jumbotron-->
+
+<div class="container">
+    <div class="row">
+
+        <div class="col-md-3">
+            <div id="toc"><ul>
+<li><a href="#page1">Easydoctor</a>
+<ul>
+<li><a href="#part1">PDF Beispiele</a></li>
+<li><a href="#part2">HTML Beispiele</a></li>
+<li><a href="#part3">Funktionen</a></li>
+<li><a href="#part4">Download/Installation</a></li>
+<li><a href="#part5">Beispiel</a></li>
+<li><a href="#part6">Arguments</a></li>
+<li><a href="#part7">Verzeichnisstruktur eines Projektes</a></li>
+<li><a href="#part8">Important to know</a></li>
+</ul></li>
+<li><a href="#page2">Syntax Hervorhebung</a>
+<ul>
+<li><a href="#part9">Wie funktionierts?</a></li>
+<li><a href="#part10">Unterstützte Sprachen:</a></li>
+</ul></li>
+<li><a href="#page3">Impressum</a></li>
+</ul></div>
+        </div>
+
+        <div class="col-md-9">
+            <article class="markdown-body">
+<h1 id="page1">Easydoctor</h1>
+<p>Kostenloser und einfacher Generator für die Erstellung von Dokumentationen, basierend auf MARKDOWN. Easydoctor generiert
+automatisch PDFs, Webseiten oder Latex/RST/Mediawiki/RTF/ODT Dokumente.</p>
+<ul>
+<li><a href="http://www.easydoctor.org">Easydoctor offizielle Webseite</a></li>
+<li><a href="https://github.com/saschaende/easydoctor">Easydoctor auf GITHUB</a></li>
+<li><a href="https://packagist.org/packages/saschaende/easydoctor">Easydoctor auf PACKAGIST</a></li>
+</ul>
+<h2 id="part1">PDF Beispiele</h2>
+<ul>
+<li><a href="https://github.com/saschaende/easydoctor/raw/master/output/test/test.pdf">PDF Beispiel 1 - Syntax tests</a></li>
+<li><a href="https://github.com/saschaende/easydoctor/raw/master/output/easydoctor/easydoctor.pdf">PDF Beispiel 2 - The easydoc readme</a></li>
+<li><a href="https://github.com/saschaende/easydoctor/raw/master/output/solr/solr.pdf">PDF Beispiel 3 - TYPO3 solr</a></li>
+</ul>
+<h2 id="part2">HTML Beispiele</h2>
+<ul>
+<li>This website :)</li>
+<li><a href="http://www.easydoctor.org/examples/solr/">HTML Website Example 3 - TYPO3 solr</a></li>
+</ul>
+<h2 id="part3">Funktionen</h2>
+<ul>
+<li>Benutze MARKDOWN um Deine Dokumentation zu schreiben</li>
+<li>Fasst Dokumentationen die aus mehreren Dateien bestehen zusammen </li>
+<li>Sehr schnell und einfach</li>
+<li><a href="https://help.github.com/articles/github-flavored-markdown">GitHub flavored</a></li>
+<li><a href="https://github.com/erusev/parsedown-extra">Markdown Extra support</a></li>
+<li>Inhaltsverzeichnis wird automatisch aus den Überschriften H1 oder H2 erstellt</li>
+<li>Syntax Hervorhebung für 287 Programmiersprachen</li>
+<li>Export in:
+<ul>
+<li>PDF</li>
+<li>HTML Website (one page)</li>
+<li>Latex (<a href="http://pandoc.org/">Pandoc</a> required)</li>
+<li>Restructured text (<a href="http://pandoc.org/">Pandoc</a> required)</li>
+<li>RTF (<a href="http://pandoc.org/">Pandoc</a> required)</li>
+<li>ODT (<a href="http://pandoc.org/">Pandoc</a> required)</li>
+</ul>
+</li>
+</ul>
+<h2 id="part4">Download/Installation</h2>
+<p><a href="https://github.com/saschaende/easydoctor/releases/latest">Lade das neueste Release runter</a> und entpacke es in
+ein Verzeichnis <strong>oder</strong> klone es von GIT:</p>
+<pre><code><span style="color: #c20cb9; font-weight: bold;">git clone</span> <span style="color: #c20cb9; font-weight: bold;">git</span><span style="color: #000000; font-weight: bold;">@</span>github.com:saschaende<span style="color: #000000; font-weight: bold;">/</span>easydoctor.git</code></pre>
+<p>Oder erstelle mit COMPOSER ein neues Projekt:</p>
+<pre><code>composer create-project saschaende<span style="color: #000000; font-weight: bold;">/</span>easydoctor</code></pre>
+<p>Installiere <a href="http://pandoc.org/">Pandoc</a> um erweiterte Funktionalitäten wie den Export nach rst, tex,
+mediawiki, rtf oder rdt zu nutzen.</p>
+<h2 id="part5">Beispiel</h2>
+<p>Führe einfach diesen Befehl in Deinem Terminal aus (passe den PHP Interpreter Pfad gegebenfalls an):</p>
+<pre><code>G:\xampp\php\php.exe easydoctor.php <span style="color: #660033;">-p</span>=<span style="color: #7a0874; font-weight: bold;">test</span></code></pre>
+<p>Dieser Befehl erstellt automatisch ein PDF und die entsprechenden Dokumentationen für das Projekt <strong>test</strong>.
+Du findest das Ergebnis dann im Ordner <code>output/dein_projekt</code></p>
+<h2 id="part6">Arguments</h2>
+<table>
+<thead><tr>
+<th>Command</th>
+<th>Description</th>
+</tr></thead>
+<tbody>
+<tr>
+<td>php easydoctor.php <code>-p</code>=<em>project</em>
+</td>
+<td>Projekt Verzeichnis, befindet sich in "doc"</td>
+</tr>
+<tr>
+<td>php easydoctor.php <code>--verbose</code>
+</td>
+<td>Keine Ausgaben erzeugen</td>
+</tr>
+<tr>
+<td>php easydoctor.php <code>--noshl</code>
+</td>
+<td>Syntax Hervorhebung deaktivieren</td>
+</tr>
+</tbody>
+</table>
+<h2 id="part7">Verzeichnisstruktur eines Projektes</h2>
+<p>Die Dokumentationsprojekte befinden sich im Ordner "doc", dort solltest Du auch Deines anlegen.</p>
+<ul>
+<li>doc
+<ul>
+<li>Projekt
+<ul>
+<li>images <code>Bilder für Dein Projekt</code>
+</li>
+<li>project.ini <code>Projekt Konfigurationsdatei</code>
+</li>
+<li>doc1.md <code>Dokumentationsdateien in Markdown</code>
+</li>
+<li>doc2.md <code>Dokumentationsdateien in Markdown</code>
+</li>
+<li>... <code>Dokumentationsdateien in Markdown</code>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="part8">Important to know</h2>
+<ul>
+<li>Überschriften H1 und H2 werden für die automaische Generierung des Inhaltsverzeichnisses genutzt.</li>
+<li>Sortiere die Dokumentationsdateien, indem Du sie z.B. numerisch benennst.</li>
+<li>Der Pfad zu PANDO kann in der Datei <code>easydoctor.ini</code> festgelegt werden.</li>
+</ul>
+<h1 id="page2">Syntax Hervorhebung</h1>
+<h2 id="part9">Wie funktionierts?</h2>
+<p>Beispiel:</p>
+<pre><code>&lt;div lang="language"&gt;YOUR CODE&lt;/div&gt;</code></pre>
+<h2 id="part10">Unterstützte Sprachen:</h2>
+<ul>
+<li>4cs </li>
+<li>6502acme </li>
+<li>6502kickass </li>
+<li>6502tasm </li>
+<li>68000devpac </li>
+<li>abap </li>
+<li>actionscript </li>
+<li>actionscript3 </li>
+<li>ada </li>
+<li>aimms </li>
+<li>algol68 </li>
+<li>apache </li>
+<li>applescript </li>
+<li>apt_sources </li>
+<li>arm </li>
+<li>asm </li>
+<li>asp </li>
+<li>asymptote </li>
+<li>autoconf </li>
+<li>autohotkey </li>
+<li>autoit </li>
+<li>avisynth </li>
+<li>awk </li>
+<li>bascomavr </li>
+<li>bash </li>
+<li>basic4gl </li>
+<li>batch </li>
+<li>bf </li>
+<li>biblatex </li>
+<li>bibtex </li>
+<li>blitzbasic </li>
+<li>bnf </li>
+<li>boo </li>
+<li>c </li>
+<li>c_loadrunner </li>
+<li>c_mac </li>
+<li>c_winapi </li>
+<li>caddcl </li>
+<li>cadlisp </li>
+<li>ceylon </li>
+<li>cfdg </li>
+<li>cfm </li>
+<li>chaiscript </li>
+<li>chapel </li>
+<li>cil </li>
+<li>clojure </li>
+<li>cmake </li>
+<li>cobol </li>
+<li>coffeescript </li>
+<li>cpp-qt </li>
+<li>cpp-winapi </li>
+<li>cpp </li>
+<li>csharp </li>
+<li>css </li>
+<li>cuesheet </li>
+<li>d </li>
+<li>dart </li>
+<li>dcl </li>
+<li>dcpu16 </li>
+<li>dcs </li>
+<li>delphi </li>
+<li>diff </li>
+<li>div </li>
+<li>dos </li>
+<li>dot </li>
+<li>e </li>
+<li>ecmascript </li>
+<li>eiffel </li>
+<li>email </li>
+<li>epc </li>
+<li>erlang </li>
+<li>euphoria </li>
+<li>ezt </li>
+<li>f1 </li>
+<li>falcon </li>
+<li>fo </li>
+<li>fortran </li>
+<li>freebasic </li>
+<li>freeswitch </li>
+<li>fsharp </li>
+<li>gambas </li>
+<li>gdb </li>
+<li>genero </li>
+<li>genie </li>
+<li>gettext </li>
+<li>glsl </li>
+<li>gml </li>
+<li>gnuplot </li>
+<li>go </li>
+<li>groovy </li>
+<li>gwbasic </li>
+<li>haskell </li>
+<li>haxe </li>
+<li>hicest </li>
+<li>hq9plus </li>
+<li>html4strict </li>
+<li>html5 </li>
+<li>icon </li>
+<li>idl </li>
+<li>ini </li>
+<li>inno </li>
+<li>intercal </li>
+<li>io </li>
+<li>ispfpanel </li>
+<li>j </li>
+<li>java </li>
+<li>java5 </li>
+<li>javascript </li>
+<li>jcl </li>
+<li>jquery </li>
+<li>julia </li>
+<li>kixtart </li>
+<li>klonec </li>
+<li>klonecpp </li>
+<li>kotlin </li>
+<li>latex </li>
+<li>lb </li>
+<li>ldif </li>
+<li>lisp </li>
+<li>llvm </li>
+<li>locobasic </li>
+<li>logtalk </li>
+<li>lolcode </li>
+<li>lotusformulas </li>
+<li>lotusscript </li>
+<li>lscript </li>
+<li>lsl2 </li>
+<li>lua </li>
+<li>m68k </li>
+<li>magiksf </li>
+<li>make </li>
+<li>mapbasic </li>
+<li>mathematica </li>
+<li>matlab </li>
+<li>mercury </li>
+<li>metapost </li>
+<li>mirc </li>
+<li>mk-61 </li>
+<li>mmix </li>
+<li>modula2 </li>
+<li>modula3 </li>
+<li>mpasm </li>
+<li>mxml </li>
+<li>mysql </li>
+<li>nagios </li>
+<li>netrexx </li>
+<li>newlisp </li>
+<li>nginx </li>
+<li>nimrod </li>
+<li>nsis </li>
+<li>oberon2 </li>
+<li>objc </li>
+<li>objeck </li>
+<li>ocaml-brief </li>
+<li>ocaml </li>
+<li>octave </li>
+<li>oobas </li>
+<li>oorexx </li>
+<li>oracle11 </li>
+<li>oracle8 </li>
+<li>oxygene </li>
+<li>oz </li>
+<li>parasail </li>
+<li>parigp </li>
+<li>pascal </li>
+<li>pcre </li>
+<li>per </li>
+<li>perl </li>
+<li>perl6 </li>
+<li>pf </li>
+<li>phix </li>
+<li>php-brief </li>
+<li>php </li>
+<li>pic16 </li>
+<li>pike </li>
+<li>pixelbender </li>
+<li>pli </li>
+<li>plsql </li>
+<li>postgresql </li>
+<li>postscript </li>
+<li>povray </li>
+<li>powerbuilder </li>
+<li>powershell </li>
+<li>proftpd </li>
+<li>progress </li>
+<li>prolog </li>
+<li>properties </li>
+<li>providex </li>
+<li>purebasic </li>
+<li>pycon </li>
+<li>pys60 </li>
+<li>python </li>
+<li>q </li>
+<li>qbasic </li>
+<li>qml </li>
+<li>racket </li>
+<li>rails </li>
+<li>rbs </li>
+<li>rebol </li>
+<li>reg </li>
+<li>rexx </li>
+<li>robots </li>
+<li>rpmspec </li>
+<li>rsplus </li>
+<li>ruby </li>
+<li>rust </li>
+<li>sas </li>
+<li>sass </li>
+<li>scala </li>
+<li>scheme </li>
+<li>scilab </li>
+<li>scl </li>
+<li>sdlbasic </li>
+<li>smalltalk </li>
+<li>smarty </li>
+<li>spark </li>
+<li>sparql </li>
+<li>sql </li>
+<li>standardml </li>
+<li>stonescript </li>
+<li>swift </li>
+<li>systemverilog </li>
+<li>tcl </li>
+<li>tclegg </li>
+<li>teraterm </li>
+<li>texgraph </li>
+<li>text </li>
+<li>thinbasic </li>
+<li>tsql </li>
+<li>twig </li>
+<li>typoscript </li>
+<li>unicon </li>
+<li>upc </li>
+<li>urbi </li>
+<li>uscript </li>
+<li>vala </li>
+<li>vb </li>
+<li>vbnet </li>
+<li>vbscript </li>
+<li>vedit </li>
+<li>verilog </li>
+<li>vhdl </li>
+<li>vim </li>
+<li>visualfoxpro </li>
+<li>visualprolog </li>
+<li>whitespace </li>
+<li>whois </li>
+<li>winbatch </li>
+<li>xbasic </li>
+<li>xml </li>
+<li>xojo </li>
+<li>xorg_conf </li>
+<li>xpp </li>
+<li>xyscript </li>
+<li>yaml </li>
+<li>z80 </li>
+<li>zxbasic </li>
+</ul>
+<h1 id="page3">Impressum</h1>
+<ul>
+<li>Sascha Ende / Kathrin Ende weebster GbR</li>
+<li>Skagenhof 9, 30457 Hannover, Germany</li>
+<li>Phone: +49-(0)511-12226806</li>
+<li>Email: info@sascha-ende.de</li>
+<li>USt-IdNr.: DE294748666</li>
+</ul>
+</article>
+        </div>
+
+    </div><!--end of .row-->
+</div><!--end of .container-->
+
+<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+<script src="vendor/theme/theme.js"></script>
+</body>
+</html>
