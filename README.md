@@ -9,7 +9,7 @@ Fast and easy documentation generator for markdown files: Generate PDF, Latex, R
 ## PDF examples
 
 * [PDF Example 1 - Syntax tests](https://github.com/saschaende/easydoctor/raw/master/output/test/test.pdf)
-* [PDF Example 2 - The easydoc readme](https://github.com/saschaende/easydoctor/raw/master/output/easydoctor/easydoctor.pdf)
+* [PDF Example 2 - The easydoc readme](https://github.com/saschaende/easydoctor/raw/master/output/easydoctor-en/easydoctor-en.pdf)
 * [PDF Example 3 - TYPO3 solr](https://github.com/saschaende/easydoctor/raw/master/output/solr/solr.pdf)
 
 ## HTML examples

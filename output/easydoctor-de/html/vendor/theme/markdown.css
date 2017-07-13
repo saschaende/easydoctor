@@ -367,6 +367,7 @@
     padding: 5px;
     background: #5cc7b2;
     color: #FFF;
+    border-radius: 3px;
 }
 
 .markdown-body h2 {

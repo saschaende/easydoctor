@@ -10,13 +10,13 @@ automatisch PDFs, Webseiten oder Latex/RST/Mediawiki/RTF/ODT Dokumente.
 ## PDF Beispiele
 
 * [PDF Beispiel 1 - Syntax tests](https://github.com/saschaende/easydoctor/raw/master/output/test/test.pdf)
-* [PDF Beispiel 2 - The easydoc readme](https://github.com/saschaende/easydoctor/raw/master/output/easydoctor/easydoctor.pdf)
+* [PDF Beispiel 2 - EASYDOC Dokumentation](https://github.com/saschaende/easydoctor/raw/master/output/easydoctor-de/easydoctor-de.pdf)
 * [PDF Beispiel 3 - TYPO3 solr](https://github.com/saschaende/easydoctor/raw/master/output/solr/solr.pdf)
 
 ## HTML Beispiele
 
-* This website :)
-* [HTML Website Example 3 - TYPO3 solr](http://www.easydoctor.org/examples/solr/)
+* Diese Webseite :)
+* [HTML Beispiel - TYPO3 solr](http://www.easydoctor.org/examples/solr/)
 
 ## Funktionen
 
@@ -78,7 +78,7 @@ Die Dokumentationsprojekte befinden sich im Ordner "doc", dort solltest Du auch 
         * doc2.md ``Dokumentationsdateien in Markdown``
         * ... ``Dokumentationsdateien in Markdown``
     
-## Important to know
+## Wichtig zu wissen
 
 * Überschriften H1 und H2 werden für die automaische Generierung des Inhaltsverzeichnisses genutzt.
 * Sortiere die Dokumentationsdateien, indem Du sie z.B. numerisch benennst.
